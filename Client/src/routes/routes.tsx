@@ -4,6 +4,7 @@ import Layout from './_layout';
 // Routes
 import HomeRoute from './HomeRoute';
 import AuthRoute from './AuthRoute';
+import CalendarRoute from './CalendarRoute';
 
 
 // Loaders
@@ -32,6 +33,10 @@ export const router = createBrowserRouter([
       {
         path: 'auth',
         element: <AuthRoute />,
+      },
+      {
+        path: 'calendar',
+        element: <CalendarRoute />,
       },
     ],
   },

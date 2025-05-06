@@ -1,4 +1,5 @@
 import { Outlet } from "react-router-dom";
+import { Toaster } from 'sonner';
 
 // Components
 import Navbar from "@/components/Molecules/Navbar";
@@ -11,6 +12,7 @@ export default function Layout() {
       <AuthSync />
       <Navbar />
       <Outlet />
+      <Toaster />
     </div>
   );
 }

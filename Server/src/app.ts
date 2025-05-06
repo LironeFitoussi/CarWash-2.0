@@ -6,6 +6,8 @@ import morgan from 'morgan'
 // Routes imports 
 import healthRouter from './routes/health.routes'
 import userRouter from './routes/user.routes'
+import eventRouter from './routes/events'
+
 const app = express()
 
 // Middlewares
@@ -21,6 +23,8 @@ app.get('/', (req, res) => {
 // Routes
 app.use('/api/v1/health', healthRouter)
 app.use('/api/v1/users', userRouter)
+app.use('/api/v1', eventRouter)
+
 export default app
 
 

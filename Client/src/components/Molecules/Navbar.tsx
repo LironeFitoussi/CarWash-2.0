@@ -8,6 +8,7 @@ const routes = [
   { name: 'About', path: '/about' },
   { name: 'Services', path: '/services' },
   { name: 'Contact', path: '/contact' },
+  { name: 'Calendar', path: '/calendar' },
 ]
 
 export default function Navbar() {
@@ -47,11 +48,11 @@ export default function Navbar() {
               </NavigationMenuItem>
             ))}
             {/* Admin Dashboard */}
-            <NavigationMenuItem>
+            {/* <NavigationMenuItem>
               <a href="/admin" className="text-sm font-medium px-3 py-2 rounded-md transition hover:bg-muted">
                 Admin Dashboard
               </a>
-            </NavigationMenuItem>
+            </NavigationMenuItem> */}
           </NavigationMenuList>
         </NavigationMenu>
 
