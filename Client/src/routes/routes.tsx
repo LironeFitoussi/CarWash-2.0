@@ -1,11 +1,11 @@
 import { createBrowserRouter } from 'react-router-dom';
 import Layout from './_layout';
+import ProtectedRoute from '@/components/ProtectedRoute';
 
 // Routes
 import HomeRoute from './HomeRoute';
 import AuthRoute from './AuthRoute';
 import CalendarRoute from './CalendarRoute';
-
 
 // Loaders
 export const router = createBrowserRouter([
@@ -13,7 +13,7 @@ export const router = createBrowserRouter([
     path: '/',
     element: <Layout />,
     errorElement: <h1>Error Page</h1>,
-        children: [
+    children: [
       {
         index: true,
         element: <HomeRoute />,
@@ -28,7 +28,7 @@ export const router = createBrowserRouter([
       },
       {
         path: 'services',
-        element: <h1>Services Page</h1>,
+        element: <ProtectedRoute element={<h1>Services Page</h1>} allowedRoles={['user', 'admin']} />,
       },
       {
         path: 'auth',
@@ -36,7 +36,11 @@ export const router = createBrowserRouter([
       },
       {
         path: 'calendar',
-        element: <CalendarRoute />,
+        element: <ProtectedRoute element={<CalendarRoute />} allowedRoles={['user', 'admin']} />,
+      },
+      {
+        path: 'admin',
+        element: <ProtectedRoute element={<h1>Admin Dashboard</h1>} allowedRoles={['admin']} />,
       },
     ],
   },

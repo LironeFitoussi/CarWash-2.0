@@ -1,7 +1,7 @@
 import axiosInstance from './axiosInstance';
 
 interface User {
-  id: string;
+  _id: string;
   firstName: string;
   lastName: string;
   email: string;
@@ -10,7 +10,10 @@ interface User {
   city: string;
   state: string;
   zip: string;
+  role: string;
 }
+
+type CreateUser = Omit<User, '_id'>;
 
 const endpoint = '/api/v1/users';
 
@@ -27,14 +30,14 @@ export const getUserByEmail = async (email: string): Promise<User> => {
 };
 
 // Create user
-export const createUser = async (user: User): Promise<User> => {
+export const createUser = async (user: CreateUser): Promise<User> => {
   const { data } = await axiosInstance.post<User>(endpoint, user);
   return data;
 };
 
 // Update user
 export const updateUser = async (user: User): Promise<User> => {
-  const { data } = await axiosInstance.put<User>(`${endpoint}/${user.id}`, user);
+  const { data } = await axiosInstance.put<User>(`${endpoint}/${user._id}`, user);
   return data;
 };
 

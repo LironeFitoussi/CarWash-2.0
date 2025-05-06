@@ -13,7 +13,7 @@ export const useAuth = () => {
     const user = localStorage.getItem('auth0_user')
     const expiresAt = localStorage.getItem('auth0_expires_at')
 
-    console.log(JSON.parse(user || '{}'));
+    // console.log(JSON.parse(user || '{}'));
     
     if (token && idToken && user && expiresAt) {
       if (Date.now() > parseInt(expiresAt)) {

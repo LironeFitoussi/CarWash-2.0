@@ -9,6 +9,7 @@ interface IUser extends Document {
   city: string;
   state: string;
   zip: string;
+  role: string;
   createdAt: Date;
   updatedAt: Date;
 }
@@ -57,6 +58,11 @@ const userSchema = new Schema<IUser>({
     type: String,
     trim: true,
     default: ''
+  },
+  role: {
+    type: String,
+    enum: ['admin', 'user'],
+    default: 'user'
   }
 }, {
   timestamps: true

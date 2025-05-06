@@ -3,6 +3,8 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { NavigationMenu, NavigationMenuItem, NavigationMenuLink, NavigationMenuList, navigationMenuTriggerStyle } from "@/components/ui/navigation-menu"
 import { motion } from "framer-motion"
 import { ArrowRight, Car, Shield, Sparkles, Star, Timer } from "lucide-react"
+import { useSelector } from "react-redux"
+import type { RootState } from "@/store"
 
 const testimonials = [
   {
@@ -47,6 +49,8 @@ const services = [
 ]
 
 export default function HomeRoute() {
+  const { role } = useSelector((state: RootState) => state.user);
+  console.log(role);
   return (
     <div className="min-h-screen">
       {/* Navigation */}

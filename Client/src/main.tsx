@@ -1,4 +1,3 @@
-import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { Provider } from 'react-redux';
 import { store } from './store';
@@ -14,7 +13,6 @@ import {
 const queryClient = new QueryClient();
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
-  <React.StrictMode>
     <Auth0Provider
       domain={import.meta.env.VITE_AUTH0_DOMAIN}
       clientId={import.meta.env.VITE_AUTH0_CLIENT_ID}
@@ -31,5 +29,4 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
         </QueryClientProvider>
       </Provider>
     </Auth0Provider>
-  </React.StrictMode>,
 );
