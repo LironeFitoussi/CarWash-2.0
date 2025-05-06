@@ -1,9 +1,10 @@
-import { useEffect, useState, useCallback } from 'react';
+import { useEffect, useState } from 'react';
 import type { ChangeEvent } from 'react';
 import FullCalendar from '@fullcalendar/react';
 import timeGridPlugin from '@fullcalendar/timegrid';
 import interactionPlugin from '@fullcalendar/interaction';
 import type { DateSelectArg, EventClickArg } from '@fullcalendar/core';
+import type { EventResizeStopArg, EventDragStopArg } from '@fullcalendar/interaction';
 import { Button } from '@/components/ui/button';
 import {
   Dialog,
@@ -19,19 +20,15 @@ import { toast } from 'sonner';
 import { eventsApi } from '@/api/events';
 import type { Event, CreateEventInput } from '@/api/events';
 import { useMediaQuery } from '@/hooks/useMediaQuery';
-import type { EventResizeStopArg } from '@fullcalendar/interaction';
-
-// Debounce function with proper types
-const debounce = <T extends (...args: any[]) => void>(func: T, wait: number): ((...args: Parameters<T>) => void) => {
-  let timeout: NodeJS.Timeout;
-  return (...args: Parameters<T>) => {
-    clearTimeout(timeout);
-    timeout = setTimeout(() => func(...args), wait);
-  };
-};
 
 const formatDateForInput = (date: string) => {
-  return new Date(date).toISOString().slice(0, 16);
+  const israelDate = new Date(date).toLocaleString('en-US', { timeZone: 'Asia/Jerusalem' });
+  return new Date(israelDate).toISOString().slice(0, 16);
+};
+
+const toIsraelTime = (date: Date): Date => {
+  const israelDate = new Date(date.toLocaleString('en-US', { timeZone: 'Asia/Jerusalem' }));
+  return israelDate;
 };
 
 export default function CalendarRoute() {
@@ -50,7 +47,12 @@ export default function CalendarRoute() {
   const loadEvents = async () => {
     try {
       const data = await eventsApi.getAll();
-      setEvents(data);
+      const eventsWithTimezone = data.map(event => ({
+        ...event,
+        start: toIsraelTime(new Date(event.start)).toISOString(),
+        end: toIsraelTime(new Date(event.end)).toISOString()
+      }));
+      setEvents(eventsWithTimezone);
     } catch (error) {
       toast.error('Failed to load events');
       console.error('Failed to load events:', error);
@@ -60,20 +62,6 @@ export default function CalendarRoute() {
   useEffect(() => {
     loadEvents();
   }, []);
-
-  // Debounced update function
-  const debouncedUpdateEvent = useCallback(
-    debounce(async (eventId: string, updates: { start: string; end: string }) => {
-      try {
-        await eventsApi.update(eventId, updates);
-        loadEvents();
-      } catch (error) {
-        toast.error('Failed to update event');
-        console.error('Failed to update event:', error);
-      }
-    }, 500),
-    []
-  );
 
   const handleDateSelect = (selectInfo: DateSelectArg) => {
     setFormData({
@@ -102,35 +90,37 @@ export default function CalendarRoute() {
     }
   };
 
+  const handleEventDrop = async (dropInfo: EventDragStopArg) => {
+    const event = events.find(e => e._id === dropInfo.event.id);
+    if (!event) return;
+
+    try {
+      await eventsApi.update(event._id, {
+        start: dropInfo.event.startStr,
+        end: dropInfo.event.endStr,
+      });
+      await loadEvents();
+    } catch (error) {
+      toast.error('Failed to update event');
+      console.error('Failed to update event:', error);
+      dropInfo.event.setDates(event.start, event.end);
+    }
+  };
+
   const handleEventResize = async (resizeInfo: EventResizeStopArg) => {
     const event = events.find(e => e._id === resizeInfo.event.id);
-    if (event) {
-      // Check if the event is being resized across days
-      const originalDay = new Date(event.start).toISOString().split('T')[0];
-      const newStartDay = new Date(resizeInfo.event.startStr).toISOString().split('T')[0];
-      const newEndDay = new Date(resizeInfo.event.endStr).toISOString().split('T')[0];
+    if (!event) return;
 
-      // If trying to resize across days, revert
-      if (originalDay !== newStartDay || originalDay !== newEndDay) {
-        resizeInfo.revert();
-        toast.error('Events cannot span multiple days');
-        return;
-      }
-
-      // Update local state immediately for smooth UI
-      setEvents(prevEvents => 
-        prevEvents.map(e => 
-          e._id === event._id 
-            ? { ...e, start: resizeInfo.event.startStr, end: resizeInfo.event.endStr }
-            : e
-        )
-      );
-
-      // Debounced API call
-      debouncedUpdateEvent(event._id, {
+    try {
+      await eventsApi.update(event._id, {
         start: resizeInfo.event.startStr,
         end: resizeInfo.event.endStr,
       });
+      await loadEvents();
+    } catch (error) {
+      toast.error('Failed to update event');
+      console.error('Failed to update event:', error);
+      resizeInfo.event.setDates(event.start, event.end);
     }
   };
 
@@ -188,42 +178,30 @@ export default function CalendarRoute() {
             center: 'title',
             right: isMobile ? '' : 'timeGridWeek',
           }}
+          timeZone="Asia/Jerusalem"
           editable={true}
           selectable={true}
           selectMirror={true}
-          dayMaxEvents={true}
           slotMinTime="06:00:00"
           slotMaxTime="22:00:00"
-          eventOverlap={false}
-          selectOverlap={false}
-          slotEventOverlap={false}
           allDaySlot={false}
-          eventResizableFromStart={true}
-          eventDurationEditable={true}
           snapDuration="00:15:00"
-          forceEventDuration={true}
-          eventConstraint={{
-            startTime: '06:00:00',
-            endTime: '22:00:00',
-            daysOfWeek: [0, 1, 2, 3, 4, 5, 6]
-          }}
-          validRange={{
-            start: '2024-01-01',
-            end: '2025-12-31'
-          }}
           events={events.map(event => ({
             id: event._id,
             title: event.title,
             start: event.start,
             end: event.end,
             description: event.description,
-            location: event.location,
-            groupId: new Date(event.start).toISOString().split('T')[0] // Group events by day
+            location: event.location
           }))}
           select={handleDateSelect}
           eventClick={handleEventClick}
           eventResize={handleEventResize}
+          eventDrop={handleEventDrop}
           height="auto"
+          slotEventOverlap={false}
+          eventOverlap={false}
+          forceEventDuration={true}
         />
       </div>
 
