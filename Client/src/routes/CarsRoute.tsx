@@ -1,5 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
+import { transliterate } from "hebrew-transliteration";
 
 interface CarInfo {
   tozeret_nm: string;
@@ -20,6 +21,7 @@ export default function CarsRoute() {
     יונדאי: "Hyundai",
     פורד: "Ford",
     מאזדה: "Mazda",
+    מזדה: "Mazda",
     מרצדס: "Mercedes",
     "ב.מ.וו": "BMW",
     וולוו: "Volvo",
@@ -33,6 +35,10 @@ export default function CarsRoute() {
     ניסאן: "Nissan",
     הונדה: "Honda",
     סקודה: "Skoda",
+    פורשה: "Porsche",
+    אלפא: "Alfa Romeo",
+    "ג'יפ": "Jeep",
+    
   };
 
   const fetchCarByNumber = async (number: string) => {
@@ -74,7 +80,7 @@ export default function CarsRoute() {
 
     const payload = {
       manufacturer: normalizeManufacturer(carInfo.tozeret_nm),
-      model: normalizeModel(carInfo.kinuy_mishari),
+      model: normalizeModel(carInfo.kinuy_mishari, carInfo.tozeret_nm),
       year: carInfo.shnat_yitzur,
       mispar_rechev: carInfo.mispar_rechev,
     };
@@ -98,9 +104,25 @@ export default function CarsRoute() {
     );
   }
 
-  function normalizeModel(rawName: string): string {
-    const firstWord = rawName.split(" ")[0];
-    return firstWord.charAt(0).toUpperCase() + firstWord.slice(1).toLowerCase();
+  // Helper to check if a string contains Hebrew characters
+  function containsHebrew(text: string): boolean {
+    return /[\u0590-\u05FF]/.test(text);
+  }
+
+  function normalizeModel(rawModel: string, rawManufacturer: string): string {
+    // If model is already in Latin, use as-is
+    if (!containsHebrew(rawModel)) {
+      return rawModel.trim();
+    }
+    // If model and manufacturer are the same after conversion, use the rest of the words after manufacturer as the model
+    const manufacturerFirstWord = rawManufacturer.trim().split(" ")[0];
+    const modelWords = rawModel.trim().split(" ");
+    if (modelWords[0] === manufacturerFirstWord && modelWords.length > 1) {
+      // Grab the rest of the words after the manufacturer
+      const rest = modelWords.slice(1).join(" ");
+      return transliterate(rest).trim() || transliterate(rawModel);
+    }
+    return transliterate(rawModel);
   }
 
   function buildGoogleImagesSearchURL(
@@ -109,7 +131,7 @@ export default function CarsRoute() {
     year?: string
   ) {
     const query = encodeURIComponent(
-      `${manufacturer} ${model.split(" ")[0]} ${year || ""}`.trim()
+      `${manufacturer} ${model} ${year || ""}`.trim()
     );
     return `https://www.google.com/search?tbm=isch&q=${query}`;
   }
@@ -144,7 +166,7 @@ export default function CarsRoute() {
           </p>
           <p>
             <strong>Model:</strong>{" "}
-            {normalizeModel(carInfo.kinuy_mishari) || "N/A"}
+            {normalizeModel(carInfo.kinuy_mishari, carInfo.tozeret_nm) || "N/A"}
           </p>
           <p>
             <strong>Year:</strong> {carInfo.shnat_yitzur || "N/A"}
@@ -153,7 +175,7 @@ export default function CarsRoute() {
           <a
             href={buildGoogleImagesSearchURL(
               normalizeManufacturer(carInfo.tozeret_nm),
-              carInfo.kinuy_mishari,
+              normalizeModel(carInfo.kinuy_mishari, carInfo.tozeret_nm),
               carInfo.shnat_yitzur
             )}
             target="_blank"
