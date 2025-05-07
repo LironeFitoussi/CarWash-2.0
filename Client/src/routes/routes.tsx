@@ -11,7 +11,7 @@ import AuthRoute from './AuthRoute';
 import CalendarRoute from './CalendarRoute';
 import CarsRoute from './CarsRoute';
 import AppointmentsRoute from './AppointmentsRoute';
-
+import ProfileRoute from './ProfileRoute';
 // Loaders
 export const router = createBrowserRouter([
   {
@@ -34,6 +34,10 @@ export const router = createBrowserRouter([
       {
         path: 'services',
         element: <ProtectedRoute element={<h1>Services Page</h1>} allowedRoles={['user', 'admin']} />,
+      },
+      {
+        path: 'profile',
+        element: <ProtectedRoute element={<ProfileRoute />} allowedRoles={['user', 'admin']} />,
       },
       {
         path: 'auth',

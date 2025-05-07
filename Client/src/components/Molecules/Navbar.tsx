@@ -11,6 +11,7 @@ const routes = [
   { name: 'About', path: '/about' },
   { name: 'Services', path: '/services' },
   { name: 'Contact', path: '/contact' },
+  { name: 'Profile', path: '/profile' },
 ]
 
 export default function Navbar() {

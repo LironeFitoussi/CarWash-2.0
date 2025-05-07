@@ -19,16 +19,20 @@ export const useUser = () => {
   const userData = useSelector((state: RootState) => state.user);
 
   useEffect(() => {
-    if (isAuthenticated && auth0User?.email) {
+    if (
+      isAuthenticated &&
+      auth0User?.email &&
+      userData.email !== auth0User.email // Only fetch if not already loaded
+    ) {
       dispatch(fetchUserByEmail({
         email: auth0User.email,
         firstName: '',
         lastName: ''
       }));
-    } else if (!isAuthenticated) {
+    } else if (!isAuthenticated && userData.email) {
       dispatch(resetUser());
     }
-  }, [isAuthenticated, auth0User?.email, dispatch]);
+  }, [isAuthenticated, auth0User?.email, dispatch, userData.email]);
 
   return {
     isLoading: auth0Loading || userData.isLoading,
