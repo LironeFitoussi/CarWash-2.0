@@ -1,4 +1,3 @@
-import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
@@ -8,42 +7,47 @@ import { toast } from "sonner"
 // Types
 import type { NewAppointment } from '@/types'
 
+// Hooks
+import { useCreateEvent } from "@/hooks/useEvent"
+
 // Components
 import UserSelect from "./UserSelect"
-export default function AddAppointmentForm({ formData, setFormData }: { formData: NewAppointment, setFormData: (formData: NewAppointment) => void }) {
-  const [title, setTitle] = useState(formData.title)
-  const [description, setDescription] = useState(formData.description)
-  const [date, setDate] = useState(formData.start)
-  const [time, setTime] = useState(formData.end)
+import { useEffect } from "react"
+export default function AddAppointmentForm({ onClose, formData, setFormData }: { onClose: () => void, formData: NewAppointment, setFormData: (formData: NewAppointment) => void }) {
+    const { mutate: createEvent, isPending, error } = useCreateEvent({
+        onSuccess: () => {
+            // Clean form data
+            setFormData({
+                title: "",
+                start: "",
+                end: "",
+                description: "",
+                location: "",
+                extendedProps: {
+                    type: "appointment",
+                    userId: "",
+                    isPickup: false,
+                    address: "",
+                }
+            })
+          toast.success("Appointment added!");
+          onClose();
+        }
+      });
+    
+      const handleSubmit = (e: React.FormEvent) => {
+        e.preventDefault();
+        createEvent(formData);
+      };
+    
+      useEffect(() => {
+        if (isPending) toast.loading("Adding appointment...");
+        if (error) toast.error("Failed to add appointment");
+      }, [isPending, error]);
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-
-    // Simulate API call
-    try {
-      if (!title || !date || !time) {
-        toast.error("Please fill in required fields")
-        return
-      }
-
-      const newAppointment = {
-        title,
-        description,
-        date,
-        time,
-      }
-
-      console.log("Submitting:", newAppointment)
-      toast.success("Appointment added!")
-    } catch (error: unknown) {
-      toast.error("Failed to add appointment")
-      console.error("Failed to add appointment:", error)
-    }
-  }
-
-  const handleUserSelect = (userId: string | null) => {
+  const handleUserSelect = (userId: string | null, userFullName: string) => {
     if (userId) {
-      setFormData({ ...formData, userId })
+      setFormData({ ...formData, extendedProps: { ...formData.extendedProps, userId }, title: `Car Wash Appointment - ${userFullName}` })
     }
   }
 
@@ -51,49 +55,42 @@ export default function AddAppointmentForm({ formData, setFormData }: { formData
     console.log("Adding user:", searchTerm)
   }
 
+  console.log(formData)
 
   return (
     <form onSubmit={handleSubmit} className="space-y-4 max-w-md mx-auto">
       <UserSelect onUserSelect={handleUserSelect} onAddUserClick={handleAddUserClick} />
-      <div>
-        <Label htmlFor="title">Title</Label>
-        <Input
-          id="title"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-          placeholder="Meeting with John"
-          required
-        />
-      </div>
 
       <div>
         <Label htmlFor="description">Description</Label>
         <Textarea
           id="description"
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
+          value={formData.description}
+          onChange={(e) => setFormData({ ...formData, description: e.target.value })}
           placeholder="Discussion about project progress"
         />
       </div>
 
+      {/* Start Date and Time */}
       <div>
-        <Label htmlFor="date">Date</Label>
+        <Label htmlFor="start">Start</Label>
         <Input
-          id="date"
-          type="date"
-          value={date}
-          onChange={(e) => setDate(e.target.value)}
+          id="start"
+          type="datetime-local"
+          value={formData.start}
+          onChange={(e) => setFormData({ ...formData, start: e.target.value })}
           required
         />
       </div>
 
+      {/* End Date and Time */}
       <div>
-        <Label htmlFor="time">Time</Label>
+        <Label htmlFor="end">End</Label>
         <Input
-          id="time"
-          type="time"
-          value={time}
-          onChange={(e) => setTime(e.target.value)}
+          id="end"
+          type="datetime-local"
+          value={formData.end}
+          onChange={(e) => setFormData({ ...formData, end: e.target.value })}
           required
         />
       </div>

@@ -14,7 +14,7 @@ export default function UserSelect({
   onUserSelect,
   onAddUserClick,
 }: {
-  onUserSelect: (userId: string | null) => void;
+  onUserSelect: (userId: string | null, userFullName: string) => void;
   onAddUserClick: (searchTerm: string) => void;
 }) {
   const [search, setSearch] = useState("");
@@ -24,7 +24,7 @@ export default function UserSelect({
   const { data: users = [], isLoading } = useUserRegex(search);
 
   const handleSelect = (user: User) => {
-    onUserSelect(user._id);
+    onUserSelect(user._id, `${user.firstName} ${user.lastName}`);
     setSearch(`${user.firstName} ${user.lastName}`);
     setShowDropdown(false);
   };

@@ -13,7 +13,9 @@ export const getAllEvents = async (req: Request, res: Response) => {
 
 export const createEvent = async (req: Request, res: Response) => {
   try {
-    const { title, description, start, end, location, extendedProps } = req.body;
+    console.log("Creating event")
+    console.log(req.body)
+    const { title, description, start, end, location, extendedProps, userId } = req.body;
     const event = await Event.create({
       title,
       description,
@@ -21,6 +23,7 @@ export const createEvent = async (req: Request, res: Response) => {
       end: new Date(end),
       location,
       extendedProps,
+      userId,
     });
     res.status(201).json(event);
   } catch (error) {

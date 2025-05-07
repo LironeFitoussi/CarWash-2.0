@@ -4,14 +4,21 @@ import { useState } from "react";
 // Components
 import AddAppoitmentForm from "../Molecules/AddAppoitmentForm";
 
+// Types
+import type { NewAppointment } from "@/types";
+
 export default function AddAppoitmentModal({ isOpen, onClose }: { isOpen: boolean, onClose: () => void }) {
-    const [ formData, setFormData ] = useState({
-        userId: "",
+    const [ formData, setFormData ] = useState<NewAppointment>({
         title: "",
         start: "",
         end: "",
         location: "",
         description: "",
+        extendedProps: {
+            type: "appointment",
+            isPickup: undefined,
+            userId: "",
+        }
     })
     
     
@@ -22,9 +29,9 @@ export default function AddAppoitmentModal({ isOpen, onClose }: { isOpen: boolea
                     <DialogTitle>Add Appointment</DialogTitle>
                 </DialogHeader>
                 <DialogDescription>
-                    <p>Add an appointment to the calendar</p>
+                    Add an appointment to the calendar
                 </DialogDescription>
-                <AddAppoitmentForm formData={formData} setFormData={setFormData} />
+                <AddAppoitmentForm onClose={onClose} formData={formData} setFormData={setFormData} />
             </DialogContent>
         </Dialog>
     )

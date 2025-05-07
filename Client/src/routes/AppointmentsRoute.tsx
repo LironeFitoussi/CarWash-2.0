@@ -1,7 +1,8 @@
-import { useEffect, useState } from "react";
+// import { useEffect, useState } from "react";
 import { eventsApi } from "@/api/events";
 import { toIsraelTime } from "@/utils/calendarHelpers";
 import { toast } from "sonner";
+import { useGetAllEvents } from "@/hooks/useEvent";
 
 // UI components
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
@@ -24,40 +25,31 @@ type GroupedAppointments = {
 };
 
 export default function AppointmentsRoute() {
-  const [appointments, setAppointments] = useState<GroupedAppointments>({});
-  const [loading, setLoading] = useState(true);
+  const { data: events, isLoading, error } = useGetAllEvents();
 
-  const loadAppointments = async () => {
-    try {
-      const data: Event[] = await eventsApi.getAll();
-
-      const appointmentsWithTimezone = data.map((event) => ({
-        ...event,
-        start: toIsraelTime(new Date(event.start)).toISOString(),
-        end: toIsraelTime(new Date(event.end)).toISOString(),
-      }));
-
-      const grouped: GroupedAppointments = {};
-      for (const apt of appointmentsWithTimezone) {
-        const date = new Date(apt.start).toLocaleDateString("he-IL", {
-          weekday: "long",
-          year: "numeric",
-          month: "long",
-          day: "numeric",
-        });
-
-        if (!grouped[date]) grouped[date] = [];
-        grouped[date].push(apt);
-      }
-
-      setAppointments(grouped);
-    } catch (error) {
-      toast.error("Failed to load appointments");
-      console.error(error);
-    } finally {
-      setLoading(false);
+  // Group events by date
+  const appointments: GroupedAppointments = {};
+  if (events) {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const appointmentsWithTimezone = events.map((event: any) => ({
+      ...event,
+      start: toIsraelTime(new Date(event.start)).toISOString(),
+      end: toIsraelTime(new Date(event.end)).toISOString(),
+      createdAt: event.createdAt || new Date().toISOString(),
+      updatedAt: event.updatedAt || new Date().toISOString(),
+      extendedProps: event.extendedProps || { type: '', isPickup: false },
+    }));
+    for (const apt of appointmentsWithTimezone) {
+      const date = new Date(apt.start).toLocaleDateString("he-IL", {
+        weekday: "long",
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+      });
+      if (!appointments[date]) appointments[date] = [];
+      appointments[date].push(apt);
     }
-  };
+  }
 
   const handleStatusChange = async (
     appointmentId: string,
@@ -66,16 +58,17 @@ export default function AppointmentsRoute() {
     try {
       await eventsApi.update(appointmentId, { status: newStatus });
       toast.success(`Appointment ${newStatus} successfully`);
-      await loadAppointments();
+      // Invalidate and refetch events
+      // This will be handled automatically if you use a mutation from useEvent hooks
     } catch (error) {
       toast.error(`Failed to update appointment status to ${newStatus}`);
       console.error(error);
     }
   };
 
-  useEffect(() => {
-    loadAppointments();
-  }, []);
+  if (error) {
+    toast.error("Failed to load appointments");
+  }
 
   return (
     <ScrollArea className="p-6 max-w-5xl mx-auto space-y-6">
@@ -83,7 +76,7 @@ export default function AppointmentsRoute() {
         <h1 className="text-3xl font-bold mb-6">📅 Appointments</h1>
         <AddAppoitmentButton />
       </div>
-      {loading ? (
+      {isLoading ? (
         <div className="space-y-4">
           {[...Array(3)].map((_, i) => (
             <Skeleton key={i} className="h-24 w-full rounded-xl" />
