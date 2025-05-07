@@ -1,6 +1,5 @@
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { NavigationMenu, NavigationMenuItem, NavigationMenuLink, NavigationMenuList, navigationMenuTriggerStyle } from "@/components/ui/navigation-menu"
 import { motion } from "framer-motion"
 import { ArrowRight, Car, Shield, Sparkles, Star, Timer } from "lucide-react"
 
@@ -49,29 +48,6 @@ const services = [
 export default function HomeRoute() {
   return (
     <div className="min-h-screen">
-      {/* Navigation */}
-      <nav className="container mx-auto py-4">
-        <NavigationMenu>
-          <NavigationMenuList className="gap-6">
-            <NavigationMenuItem>
-              <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                Services
-              </NavigationMenuLink>
-            </NavigationMenuItem>
-            <NavigationMenuItem>
-              <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                About
-              </NavigationMenuLink>
-            </NavigationMenuItem>
-            <NavigationMenuItem>
-              <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                Contact
-              </NavigationMenuLink>
-            </NavigationMenuItem>
-          </NavigationMenuList>
-        </NavigationMenu>
-      </nav>
-
       {/* Hero Section */}
       <section className="container mx-auto py-20 text-center">
         <motion.div

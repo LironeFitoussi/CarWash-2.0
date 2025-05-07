@@ -5,7 +5,7 @@ import { Toaster } from 'sonner';
 export default function AdminLayout() {
   return (
     <>
-      <AdminNavbar />
+        <AdminNavbar />
       <Outlet />
       <Toaster />
     </>

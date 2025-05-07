@@ -142,13 +142,15 @@ export default function CalendarRoute() {
 
         <div className="bg-white rounded-lg shadow p-4">
           <FullCalendar
+            key={isMobile ? 'mobile' : 'desktop'}
             plugins={[timeGridPlugin, interactionPlugin]}
             initialView={isMobile ? "timeGridDay" : "timeGridWeek"}
             headerToolbar={{
               left: "prev,next today",
               center: "title",
-              right: isMobile ? "" : "timeGridWeek",
+              right: isMobile ? "" : "timeGridWeek,timeGridDay",
             }}
+            views={isMobile ? { timeGridDay: {} } : { timeGridWeek: {}, timeGridDay: {} }}
             timeZone="Asia/Jerusalem"
             editable={true}
             selectable={true}

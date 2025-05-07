@@ -11,10 +11,10 @@ export default function AdminNavbar() {
   const location = useLocation()
 
   return (
-    <header className="w-full bg-white sticky top-0 z-50 max-w-6xl mx-auto px-4 py-6 flex items-center justify-center my-4">
+    <header className="w-full bg-white sticky top-0 z-30 max-w-6xl mx-auto px-4 py-6 flex items-center justify-center my-4">
     
         <NavigationMenu>
-          <NavigationMenuList className="hidden md:flex gap-4">
+          <NavigationMenuList className="flex md:flex-row gap-2 md:gap-4 w-full md:w-auto sticky top-0 z-30">
             {routes.map((route) => (
               <NavigationMenuItem key={route.path} className="flex items-center justify-center">
                 <Link
