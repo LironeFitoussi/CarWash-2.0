@@ -12,6 +12,10 @@ import CalendarRoute from './CalendarRoute';
 import CarsRoute from './CarsRoute';
 import AppointmentsRoute from './AppointmentsRoute';
 import ProfileRoute from './ProfileRoute';
+import AboutRoute from './AboutRoute';
+import ContactRoute from './ContactRoute';
+import ServicesRoute from './ServicesRoute';
+
 // Loaders
 export const router = createBrowserRouter([
   {
@@ -25,15 +29,15 @@ export const router = createBrowserRouter([
       },
       {
         path: 'about',
-        element: <h1>About Page</h1>,
+        element: <AboutRoute />,
       },
       {
         path: 'contact',
-        element: <h1>Contact Page</h1>,
+        element: <ContactRoute />,
       },
       {
         path: 'services',
-        element: <ProtectedRoute element={<h1>Services Page</h1>} allowedRoles={['user', 'admin']} />,
+        element: <ServicesRoute />,
       },
       {
         path: 'profile',
