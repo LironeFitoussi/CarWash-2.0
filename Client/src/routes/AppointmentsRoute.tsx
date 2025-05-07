@@ -1,8 +1,8 @@
 // import { useEffect, useState } from "react";
-import { eventsApi } from "@/api/events";
+// import { eventsApi } from "@/api/events";
 import { toIsraelTime } from "@/utils/calendarHelpers";
 import { toast } from "sonner";
-import { useGetAllEvents } from "@/hooks/useEvent";
+import { useGetAllEvents, useUpdateEvent } from "@/hooks/useEvent";
 
 // UI components
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
@@ -26,6 +26,7 @@ type GroupedAppointments = {
 
 export default function AppointmentsRoute() {
   const { data: events, isLoading, error } = useGetAllEvents();
+  const updateEventMutation = useUpdateEvent();
 
   // Group events by date
   const appointments: GroupedAppointments = {};
@@ -51,19 +52,27 @@ export default function AppointmentsRoute() {
     }
   }
 
-  const handleStatusChange = async (
+  const handleStatusChange = (
     appointmentId: string,
     newStatus: "pending" | "confirmed" | "cancelled" | "completed"
   ) => {
-    try {
-      await eventsApi.update(appointmentId, { status: newStatus });
-      toast.success(`Appointment ${newStatus} successfully`);
-      // Invalidate and refetch events
-      // This will be handled automatically if you use a mutation from useEvent hooks
-    } catch (error) {
-      toast.error(`Failed to update appointment status to ${newStatus}`);
-      console.error(error);
+    // Find the appointment object
+    const apt = Object.values(appointments).flat().find((a) => a._id === appointmentId);
+    if (!apt) {
+      toast.error("Appointment not found");
+      return;
     }
+    updateEventMutation.mutate(
+      { ...apt, status: newStatus },
+      {
+        onSuccess: () => {
+          toast.success(`Appointment ${newStatus} successfully`);
+        },
+        onError: () => {
+          toast.error(`Failed to update appointment status to ${newStatus}`);
+        },
+      }
+    );
   };
 
   if (error) {

@@ -1,6 +1,6 @@
 import axiosInstance from './axiosInstance';
 
-import type { CreateEvent, Event } from '@/types';
+import type { Event, CreateEventInput } from '@/api/events';
 
 const endpoint = '/api/v1/events';
 
@@ -17,7 +17,7 @@ export const getEventById = async (id: string): Promise<Event> => {
 };
 
 // Create event
-export const createEvent = async (event: CreateEvent): Promise<Event> => {
+export const createEvent = async (event: CreateEventInput): Promise<Event> => {
   console.log("Creating event")
   console.log(event)
   const { data } = await axiosInstance.post<Event>(endpoint, event);
@@ -26,7 +26,7 @@ export const createEvent = async (event: CreateEvent): Promise<Event> => {
 
 // Update event
 export const updateEvent = async (event: Event): Promise<Event> => {
-  const { data } = await axiosInstance.put<Event>(`${endpoint}/${event._id}`, event);
+  const { data } = await axiosInstance.patch<Event>(`${endpoint}/${event._id}`, event);
   return data;
 };
 

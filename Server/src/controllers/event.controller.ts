@@ -35,7 +35,7 @@ export const createEvent = async (req: Request, res: Response) => {
 export const updateEvent = async (req: Request, res: Response) => {
   try {
     const { id } = req.params;
-    const { title, description, start, end, location, status } = req.body;
+    const { title, description, start, end, location, status, extendedProps } = req.body;
     
     const updatedEvent = await Event.findByIdAndUpdate(
       id,
@@ -46,6 +46,7 @@ export const updateEvent = async (req: Request, res: Response) => {
         ...(end && { end: new Date(end) }),
         ...(location && { location }),
         ...(status && { status }),
+        ...(extendedProps && { extendedProps }),
       },
       { new: true }
     );

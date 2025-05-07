@@ -37,7 +37,13 @@ export default function AddAppointmentForm({ onClose, formData, setFormData }: {
     
       const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
-        createEvent(formData);
+        createEvent({
+          ...formData,
+          extendedProps: {
+            ...formData.extendedProps,
+            isPickup: formData.extendedProps.isPickup ?? false,
+          },
+        });
       };
     
       useEffect(() => {

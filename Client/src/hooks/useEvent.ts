@@ -1,8 +1,7 @@
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 
-import { createEvent, getAllEvents } from '@/api/eventService';
+import { createEvent, getAllEvents, updateEvent, deleteEvent } from '@/api/eventService';
 
- 
 export const useGetAllEvents = () => {
   const { data, isLoading, error } = useQuery({
     queryKey: ['events'],
@@ -27,5 +26,27 @@ export const useCreateEvent = (options?: { onSuccess?: () => void }) => {
       },
     });
   };
+
+export const useUpdateEvent = (options?: { onSuccess?: () => void }) => {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: updateEvent,
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['events'] });
+      options?.onSuccess?.();
+    },
+  });
+};
+
+export const useDeleteEvent = (options?: { onSuccess?: () => void }) => {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: deleteEvent,
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['events'] });
+      options?.onSuccess?.();
+    },
+  });
+};
 
 

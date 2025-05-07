@@ -10,7 +10,6 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import type { ChangeEvent } from "react";
-import { eventsApi } from "@/api/events";
 import { toast } from "sonner";
 import { toUTCForAPI } from "@/utils/calendarHelpers";
 import { Checkbox } from "@/components/ui/checkbox";
@@ -26,12 +25,13 @@ import { Label } from "@radix-ui/react-label";
 
 // Components
 import GoogleAddressLookup from "@/components/Molecules/GoogleAddressLookup";
+import { useCreateEvent, useUpdateEvent, useDeleteEvent } from '@/hooks/useEvent';
+
 export default function NewEventModal({
   selectedEvent,
   setModalOpen,
   isOpen,
   onClose,
-  loadEvents,
   formData,
   setFormData,
 }: {
@@ -39,10 +39,13 @@ export default function NewEventModal({
   setModalOpen: (open: boolean) => void;
   isOpen: boolean;
   onClose: () => void;
-  loadEvents: () => void;
   formData: CreateEventInput;
   setFormData: (formData: CreateEventInput) => void;
 }) {
+  const createEventMutation = useCreateEvent({ onSuccess: () => setModalOpen(false) });
+  const updateEventMutation = useUpdateEvent({ onSuccess: () => setModalOpen(false) });
+  const deleteEventMutation = useDeleteEvent({ onSuccess: () => setModalOpen(false) });
+
   const handleSubmit = async () => {
     try {
       const apiFormData = {
@@ -52,14 +55,12 @@ export default function NewEventModal({
       };
 
       if (selectedEvent) {
-        await eventsApi.update(selectedEvent._id, apiFormData);
+        await updateEventMutation.mutateAsync({ ...selectedEvent, ...apiFormData });
         toast.success("Event updated successfully");
       } else {
-        await eventsApi.create(apiFormData);
+        await createEventMutation.mutateAsync(apiFormData);
         toast.success("Event created successfully");
       }
-      setModalOpen(false);
-      loadEvents();
     } catch (error) {
       toast.error("Failed to save event");
       console.error("Failed to save event:", error);
@@ -68,10 +69,8 @@ export default function NewEventModal({
   const handleDelete = async () => {
     if (!selectedEvent) return;
     try {
-      await eventsApi.delete(selectedEvent._id);
+      await deleteEventMutation.mutateAsync(selectedEvent._id);
       toast.success("Event deleted successfully");
-      setModalOpen(false);
-      loadEvents();
     } catch (error) {
       toast.error("Failed to delete event");
       console.error("Failed to delete event:", error);

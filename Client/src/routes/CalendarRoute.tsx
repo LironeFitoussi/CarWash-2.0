@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import FullCalendar from "@fullcalendar/react";
 import timeGridPlugin from "@fullcalendar/timegrid";
 import interactionPlugin from "@fullcalendar/interaction";
@@ -11,6 +11,7 @@ import { toast } from "sonner";
 import { eventsApi } from "@/api/events";
 import type { Event as ApiEvent, CreateEventInput } from "@/api/events";
 import { useMediaQuery } from "@/hooks/useMediaQuery";
+import { useGetAllEvents } from "@/hooks/useEvent";
 
 // Helpers
 import { toIsraelTime, fromUTCToLocal } from "@/utils/calendarHelpers";
@@ -20,7 +21,7 @@ import NewEventModal from "@/components/Organisms/NewEventModal";
 import CopyCalendarButton from "@/components/Atoms/CopyCalendarButton";
 
 export default function CalendarRoute() {
-  const [events, setEvents] = useState<ApiEvent[]>([]);
+  const { data: eventsData, isLoading, error } = useGetAllEvents();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedEvent, setSelectedEvent] = useState<ApiEvent | null>(null);
   const isMobile = useMediaQuery("(max-width: 768px)");
@@ -39,29 +40,24 @@ export default function CalendarRoute() {
 
   // console.log(formData);
   
-  const loadEvents = async () => {
-    try {
-      const data = await eventsApi.getAll();
-      // console.log(data);
-      
-      const eventsWithTimezone = data.map((event) => ({
-        ...event,
-        start: toIsraelTime(new Date(event.start)).toISOString(),
-        end: toIsraelTime(new Date(event.end)).toISOString(),
-      }));
-      // console.log(eventsWithTimezone);
-      
-      setEvents(eventsWithTimezone);
-    } catch (error) {
-      toast.error("Failed to load events");
-      console.error("Failed to load events:", error);
-    }
-  };
+  // Transform events from hook data
+  const events = (eventsData || []).map((event) => ({
+    ...event,
+    start: toIsraelTime(new Date(event.start)).toISOString(),
+    end: toIsraelTime(new Date(event.end)).toISOString(),
+    location: event.location || "",
+    createdAt: event.createdAt,
+    updatedAt: event.updatedAt,
+    status: event.status,
+    extendedProps: {
+      type: event.extendedProps.type,
+      isPickup: event.extendedProps.isPickup,
+      address: event.extendedProps.address || "",
+    },
+  }));
 
-  useEffect(() => {
-    loadEvents();
-  }, []);
-
+  // console.log(formData);
+  
   const handleDateSelect = (selectInfo: DateSelectArg) => {
     setFormData({
       title: "",
@@ -110,7 +106,8 @@ export default function CalendarRoute() {
         start: dropInfo.event.startStr,
         end: dropInfo.event.endStr,
       });
-      await loadEvents();
+      // Optionally, refetch events if not using mutation hook
+      // queryClient.invalidateQueries({ queryKey: ['events'] });
     } catch (error) {
       toast.error("Failed to update event");
       console.error("Failed to update event:", error);
@@ -127,13 +124,17 @@ export default function CalendarRoute() {
         start: resizeInfo.event.startStr,
         end: resizeInfo.event.endStr,
       });
-      await loadEvents();
+      // Optionally, refetch events if not using mutation hook
+      // queryClient.invalidateQueries({ queryKey: ['events'] });
     } catch (error) {
       toast.error("Failed to update event");
       console.error("Failed to update event:", error);
       resizeInfo.event.setDates(event.start, event.end);
     }
   };
+
+  if (isLoading) return <div>Loading events...</div>;
+  if (error) return <div>Failed to load events</div>;
 
   return (
     <>
@@ -209,7 +210,6 @@ export default function CalendarRoute() {
         formData={formData}
         setFormData={setFormData}
         selectedEvent={selectedEvent}
-        loadEvents={loadEvents}
         setModalOpen={setIsModalOpen}
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
