@@ -8,10 +8,10 @@ import { fetchUserByEmail, resetUser } from '../store/slices/userSlice';
 import { useQuery } from '@tanstack/react-query';
 
 // API
-import { getUserRegex } from '@/api/userService';
+import { getUserRegex, createUser } from '@/api/userService';
 
 // Types
-import type { User } from '@/types';
+import type { User, CreateUser } from '@/types';
 
 export const useUser = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -47,4 +47,16 @@ export const useUserRegex = (regex: string) => {
   };
 };
 
+export const useUserCreate = (user: CreateUser) => {
+  const { data, isLoading, error } = useQuery({
+    queryKey: ['user'],
+    queryFn: () => createUser(user),
+  });
+ 
+  return {
+    data,
+    isLoading,
+    error,
+  };
+}
 

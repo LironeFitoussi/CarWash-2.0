@@ -19,3 +19,5 @@ export type NewAppointment = {
   location: string;
   description: string;
 };
+
+export type CreateUser = Omit<User, '_id'>;

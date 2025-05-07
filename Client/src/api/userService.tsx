@@ -1,19 +1,6 @@
 import axiosInstance from './axiosInstance';
 
-interface User {
-  _id: string;
-  firstName: string;
-  lastName: string;
-  email: string;
-  phone: string;
-  address: string;
-  city: string;
-  state: string;
-  zip: string;
-  role: string;
-}
-
-type CreateUser = Omit<User, '_id'>;
+import type { User, CreateUser } from '@/types';
 
 const endpoint = '/api/v1/users';
 

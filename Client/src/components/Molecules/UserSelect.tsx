@@ -4,6 +4,9 @@ import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
 import { useUserRegex } from "@/hooks/useUser";
 
+// Components
+import AddUserModal from "../Organisms/AddUserModal";
+
 // Types
 import type { User } from "@/types";
 
@@ -16,6 +19,7 @@ export default function UserSelect({
 }) {
   const [search, setSearch] = useState("");
   const [showDropdown, setShowDropdown] = useState(false);
+  const [showAddUserModal, setShowAddUserModal] = useState(false);
 
   const { data: users = [], isLoading } = useUserRegex(search);
 
@@ -23,6 +27,16 @@ export default function UserSelect({
     onUserSelect(user._id);
     setSearch(`${user.firstName} ${user.lastName}`);
     setShowDropdown(false);
+  };
+
+  const handleAddUser = () => {
+    setShowAddUserModal(true);
+    onAddUserClick(search);
+  };
+
+  const handleUserCreated = (user: User) => {
+    handleSelect(user);
+    setShowAddUserModal(false);
   };
 
   return (
@@ -61,8 +75,8 @@ export default function UserSelect({
               <Button
                 variant="ghost"
                 size="sm"
-                className="px-0"
-                onClick={() => onAddUserClick(search)}
+                className="w-full text-left"
+                onClick={handleAddUser}
               >
                 ➕ Add "{search}" as new user
               </Button>
@@ -70,6 +84,12 @@ export default function UserSelect({
           )}
         </div>
       )}
+
+      <AddUserModal 
+        isOpen={showAddUserModal} 
+        onClose={() => setShowAddUserModal(false)}
+        onUserCreated={handleUserCreated}
+      />
     </div>
   );
 }
