@@ -98,10 +98,10 @@ const userSlice = createSlice({
         state.firstName = action.payload.firstName;
         state.lastName = action.payload.lastName;
         state.phone = action.payload.phone;
-        state.address = action.payload.address;
-        state.city = action.payload.city;
-        state.state = action.payload.state;
-        state.zip = action.payload.zip;
+        state.address = action.payload.address || '';
+        state.city = action.payload.city || '';
+        state.state = action.payload.state || '';
+        state.zip = action.payload.zip || '';
         state.role = action.payload.role;
       })
       .addCase(fetchUserByEmail.rejected, (state, action) => {
