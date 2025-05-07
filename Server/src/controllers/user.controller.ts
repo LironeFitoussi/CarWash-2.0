@@ -77,3 +77,26 @@ export const deleteUser = async (req: Request, res: Response) => {
     res.status(500).json({ message: 'Error deleting user', error });
   }
 };
+
+// Get user by regex
+export const getUserRegex = async (req: Request, res: Response) => {
+    // in case regex strts with 0, replace it with "+972"
+    const regex = req.params.regex.startsWith('0') ? `${req.params.regex.replace('0', '972')}` : req.params.regex;
+    try {
+        console.log(regex);
+    
+        const searchRegex = new RegExp(regex, 'i');
+        const users = await User.find({
+        $or: [
+            { firstName: searchRegex },
+            { lastName: searchRegex },
+            { email: searchRegex },
+            { phone: searchRegex }
+        ]
+        });
+        res.status(200).json(users);
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({ message: 'Error fetching users', error });
+    }
+};

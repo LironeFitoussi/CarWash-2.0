@@ -7,6 +7,7 @@ import HomeRoute from './HomeRoute';
 import AuthRoute from './AuthRoute';
 import CalendarRoute from './CalendarRoute';
 import CarsRoute from './CarsRoute';
+import AppointmentsRoute from './AppointmentsRoute';
 
 // Loaders
 export const router = createBrowserRouter([
@@ -42,6 +43,10 @@ export const router = createBrowserRouter([
       {
         path: 'cars',
         element: <ProtectedRoute element={<CarsRoute />} allowedRoles={['user', 'admin']} />,
+      },
+      {
+        path: 'appointments',
+        element: <ProtectedRoute element={<AppointmentsRoute />} allowedRoles={['user', 'admin']} />,
       },
       {
         path: 'admin',

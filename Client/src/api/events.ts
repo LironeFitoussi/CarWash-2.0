@@ -11,6 +11,7 @@ export interface Event {
   location?: string;
   createdAt: string;
   updatedAt: string;
+  status?: string;
   extendedProps: {
     type: string;
     isPickup: boolean;
@@ -24,6 +25,7 @@ export interface CreateEventInput {
   start: string;
   end: string;
   location?: string;
+  status?: string;
   extendedProps: {
     type: string;
     isPickup: boolean;

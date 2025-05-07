@@ -25,14 +25,14 @@ export const createEvent = async (req: Request, res: Response) => {
     res.status(201).json(event);
   } catch (error) {
     console.error(error);
-    res.status(400).json({ error: 'Invalid event data' });
+    res.status(400).json({ error: 'Invalid event data', message: (error as Error).message });
   }
 };
 
 export const updateEvent = async (req: Request, res: Response) => {
   try {
     const { id } = req.params;
-    const { title, description, start, end, location } = req.body;
+    const { title, description, start, end, location, status } = req.body;
     
     const updatedEvent = await Event.findByIdAndUpdate(
       id,
@@ -42,6 +42,7 @@ export const updateEvent = async (req: Request, res: Response) => {
         ...(start && { start: new Date(start) }),
         ...(end && { end: new Date(end) }),
         ...(location && { location }),
+        ...(status && { status }),
       },
       { new: true }
     );

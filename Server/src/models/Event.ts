@@ -1,5 +1,13 @@
 import mongoose, { Schema, Document } from 'mongoose';
 
+interface ExtendedProps {
+  type: string;
+  isPickup: boolean | undefined;
+  address: string | undefined;
+  carId: string | undefined;
+  carType: string | undefined;
+  userId: string | undefined;
+}
 export interface Event extends Document {
   title: string;
   description: string;
@@ -8,22 +16,8 @@ export interface Event extends Document {
   location?: string;
   createdAt: Date;
   updatedAt: Date;
-  extendedProps: {
-    type: string;
-    carId: string | undefined;
-    carType: string | undefined;
-    isPickup: boolean | undefined;
-    address: string | undefined;
-  }
+  extendedProps: ExtendedProps;
   status: string | undefined;
-}
-
-interface ExtendedProps {
-  type: string;
-  isPickup: boolean;
-  address: string;
-  carId: string | undefined;
-  carType: string | undefined;
 }
 
 // ExtendedProps Schema
@@ -33,18 +27,19 @@ const extendedPropsSchema = new Schema<ExtendedProps>({
   address: { type: String },
   carId: { type: String },
   carType: { type: String, enum: ['big', 'medium', 'small', 'motorcycle'] },
+  userId: { type: String },
 });
 
 // Event Schema
 const eventSchema = new Schema<Event>(
   {
     title: { type: String, required: true },
-    description: { type: String, required: true },
+    description: { type: String},
     start: { type: Date, required: true },
     end: { type: Date, required: true },
     location: { type: String },
     extendedProps: { type: extendedPropsSchema, required: true },
-    status: { type: String, enum: ['pending', 'confirmed', 'cancelled'], default: 'pending' },
+    status: { type: String, enum: ['pending', 'confirmed', 'cancelled', 'completed'], default: 'pending' },
   },
   { timestamps: true }
 );
@@ -56,6 +51,13 @@ eventSchema.pre('save', function (next) {
     this.extendedProps.carId = undefined;
     this.extendedProps.carType = undefined;
     this.extendedProps.isPickup = undefined;
+    this.extendedProps.userId = undefined;
+    this.extendedProps.address = undefined;
+  } else if (this.extendedProps.type === 'appointment') {
+    // make sure userId is set
+    if (!this.extendedProps.userId) {
+      throw new Error('userId is required for appointment');
+    }
   }
   next();
 });

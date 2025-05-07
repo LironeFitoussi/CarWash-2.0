@@ -1,9 +1,16 @@
 import { useState } from "react";
 import axios from "axios";
 
+interface CarInfo {
+  tozeret_nm: string;
+  kinuy_mishari: string;
+  shnat_yitzur: string;
+  mispar_rechev: string;
+}
+
 export default function CarsRoute() {
   const [carNumber, setCarNumber] = useState("1234567");
-  const [carInfo, setCarInfo] = useState<any | null>(null);
+  const [carInfo, setCarInfo] = useState<CarInfo | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 

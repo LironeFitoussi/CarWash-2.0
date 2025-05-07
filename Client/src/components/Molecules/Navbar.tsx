@@ -10,6 +10,7 @@ const routes = [
   { name: 'Contact', path: '/contact' },
   { name: 'Calendar', path: '/calendar' },
   { name: 'Cars', path: '/cars' },
+  { name: 'Appointments', path: '/appointments' },
 ]
 
 export default function Navbar() {

@@ -1,9 +1,17 @@
 import { useEffect } from 'react';
 import { useAuth0 } from '@auth0/auth0-react';
 import { useDispatch, useSelector } from 'react-redux';
-import { RootState } from '../store';
+import type { RootState, AppDispatch } from '../store';
 import { fetchUserByEmail, resetUser } from '../store/slices/userSlice';
-import { AppDispatch } from '../store';
+
+// React Query
+import { useQuery } from '@tanstack/react-query';
+
+// API
+import { getUserRegex } from '@/api/userService';
+
+// Types
+import type { User } from '@/types';
 
 export const useUser = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -25,3 +33,18 @@ export const useUser = () => {
     error: userData.error,
   };
 }; 
+
+export const useUserRegex = (regex: string) => {
+  const { data, isLoading, error } = useQuery({
+    queryKey: ['users', regex],
+    queryFn: () => getUserRegex(regex),
+  });
+
+  return {
+    data: data as User[],
+    isLoading,
+    error,
+  };
+};
+
+

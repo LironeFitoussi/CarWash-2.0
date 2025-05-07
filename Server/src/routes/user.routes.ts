@@ -5,7 +5,8 @@ import {
   getUserByEmail,
   createUser,
   updateUser,
-  deleteUser
+  deleteUser,
+  getUserRegex
 } from '../controllers/user.controller';
 
 const router = Router();
@@ -27,5 +28,8 @@ router.put('/:id', updateUser as RequestHandler);
 
 // Delete user
 router.delete('/:id', deleteUser as RequestHandler);
+
+// Get user by regex
+router.get('/regex/:regex', getUserRegex as RequestHandler);
 
 export default router;

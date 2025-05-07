@@ -29,6 +29,12 @@ export const getUserByEmail = async (email: string): Promise<User> => {
   return data;
 };
 
+// Get user by regex
+export const getUserRegex = async (regex: string): Promise<User[]> => {
+  const { data } = await axiosInstance.get<User[]>(`${endpoint}/regex/${regex}`);
+  return data;
+};
+
 // Create user
 export const createUser = async (user: CreateUser): Promise<User> => {
   const { data } = await axiosInstance.post<User>(endpoint, user);

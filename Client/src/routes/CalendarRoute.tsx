@@ -42,6 +42,8 @@ export default function CalendarRoute() {
   const loadEvents = async () => {
     try {
       const data = await eventsApi.getAll();
+      console.log(data);
+      
       const eventsWithTimezone = data.map((event) => ({
         ...event,
         start: toIsraelTime(new Date(event.start)).toISOString(),
