@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3001/api/v1';
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3001';
 
 export interface Event {
   _id: string;
@@ -37,25 +37,25 @@ export type UpdateEventInput = Partial<CreateEventInput>;
 
 export const eventsApi = {
   getAll: async (): Promise<Event[]> => {
-    const response = await axios.get(`${API_URL}/events`);
+    const response = await axios.get(`${API_URL}/api/v1/events`);
     return response.data;
   },
 
   create: async (event: CreateEventInput): Promise<Event> => {
-    const response = await axios.post(`${API_URL}/events`, event);
+    const response = await axios.post(`${API_URL}/api/v1/events`, event);
     return response.data;
   },
 
   update: async (id: string, event: UpdateEventInput): Promise<Event> => {
-    const response = await axios.patch(`${API_URL}/events/${id}`, event);
+    const response = await axios.patch(`${API_URL}/api/v1/events/${id}`, event);
     return response.data;
   },
 
   delete: async (id: string): Promise<void> => {
-    await axios.delete(`${API_URL}/events/${id}`);
+    await axios.delete(`${API_URL}/api/v1/events/${id}`);
   },
 
   getICalendarUrl: (): string => {
-    return `${API_URL}/calendar/admin.ics`;
+    return `${API_URL}/api/v1/calendar/admin.ics`;
   }
 }; 
