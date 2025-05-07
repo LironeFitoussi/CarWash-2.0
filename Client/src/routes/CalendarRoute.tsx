@@ -31,12 +31,14 @@ export default function CalendarRoute() {
     end: "",
     location: "",
     extendedProps: {
-      type: "",
+      type: "appointment",
       isPickup: false,
       address: "",
     },
   });
 
+  console.log(formData);
+  
   const loadEvents = async () => {
     try {
       const data = await eventsApi.getAll();
@@ -45,6 +47,8 @@ export default function CalendarRoute() {
         start: toIsraelTime(new Date(event.start)).toISOString(),
         end: toIsraelTime(new Date(event.end)).toISOString(),
       }));
+      // console.log(eventsWithTimezone);
+      
       setEvents(eventsWithTimezone);
     } catch (error) {
       toast.error("Failed to load events");
@@ -64,8 +68,9 @@ export default function CalendarRoute() {
       end: selectInfo.endStr,
       location: "",
       extendedProps: {
-        type: "",
+        type: "appointment",
         isPickup: false,
+        address: "",
       },
     });
     setSelectedEvent(null);
@@ -87,6 +92,7 @@ export default function CalendarRoute() {
         extendedProps: {
           type: event.extendedProps.type,
           isPickup: event.extendedProps.isPickup,
+          address: event.extendedProps.address || "",
         },
       });
       setIsModalOpen(true);
@@ -167,7 +173,11 @@ export default function CalendarRoute() {
               start: event.start,
               end: event.end,
               description: event.description,
-              location: event.location,
+              extendedProps: {
+                type: event.extendedProps.type,
+                isPickup: event.extendedProps.isPickup,
+                address: event.extendedProps.address,
+              },
             }))}
             select={handleDateSelect}
             eventClick={handleEventClick}
@@ -177,6 +187,16 @@ export default function CalendarRoute() {
             slotEventOverlap={false}
             eventOverlap={false}
             forceEventDuration={true}
+            eventContent={(arg) => {
+              return (
+                <>
+                  <div className="font-semibold">{arg.event.title}</div>
+                  {arg.event.extendedProps.address && (
+                    <div className="text-sm text-gray-600">📍 {arg.event.extendedProps.address}</div>
+                  )}
+                </>
+              )
+            }}
           />
         </div>
       </div>

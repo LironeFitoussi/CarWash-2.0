@@ -13,10 +13,29 @@ export interface Event extends Document {
     carId: string | undefined;
     carType: string | undefined;
     isPickup: boolean | undefined;
+    address: string | undefined;
   }
   status: string | undefined;
 }
 
+interface ExtendedProps {
+  type: string;
+  isPickup: boolean;
+  address: string;
+  carId: string | undefined;
+  carType: string | undefined;
+}
+
+// ExtendedProps Schema
+const extendedPropsSchema = new Schema<ExtendedProps>({
+  type: { type: String, required: true, enum: ['appointment', 'availability'] },
+  isPickup: { type: Boolean, default: false },
+  address: { type: String },
+  carId: { type: String },
+  carType: { type: String, enum: ['big', 'medium', 'small', 'motorcycle'] },
+});
+
+// Event Schema
 const eventSchema = new Schema<Event>(
   {
     title: { type: String, required: true },
@@ -24,12 +43,7 @@ const eventSchema = new Schema<Event>(
     start: { type: Date, required: true },
     end: { type: Date, required: true },
     location: { type: String },
-    extendedProps: {
-      type: { type: String, required: true, enum: ['appointment', 'availability'] },
-      isPickup: { type: Boolean, default: false },
-      carId: { type: String },
-      carType: { type: String, enum: ['big', 'medium', 'small', 'motorcycle'] },
-    },
+    extendedProps: { type: extendedPropsSchema, required: true },
     status: { type: String, enum: ['pending', 'confirmed', 'cancelled'], default: 'pending' },
   },
   { timestamps: true }

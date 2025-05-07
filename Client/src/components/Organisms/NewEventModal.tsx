@@ -15,7 +15,13 @@ import { toast } from "sonner";
 import { toUTCForAPI } from "@/utils/calendarHelpers";
 import { Checkbox } from "@/components/ui/checkbox";
 import type { CreateEventInput, Event as ApiEvent } from "@/api/events";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { Label } from "@radix-ui/react-label";
 
 // Components
@@ -37,15 +43,14 @@ export default function NewEventModal({
   formData: CreateEventInput;
   setFormData: (formData: CreateEventInput) => void;
 }) {
-
   const handleSubmit = async () => {
     try {
       const apiFormData = {
         ...formData,
         start: toUTCForAPI(formData.start),
-        end: toUTCForAPI(formData.end)
+        end: toUTCForAPI(formData.end),
       };
-      
+
       if (selectedEvent) {
         await eventsApi.update(selectedEvent._id, apiFormData);
         toast.success("Event updated successfully");
@@ -72,9 +77,38 @@ export default function NewEventModal({
       console.error("Failed to delete event:", error);
     }
   };
+
+  const handleOpenChange = () => {
+    // Check if the click target is part of the Google Places autocomplete
+    const activeElement = document.activeElement;
+    const pacContainer = document.querySelector('.pac-container');
+    if (
+      activeElement?.closest('.google-address-lookup') ||
+      (pacContainer && pacContainer.contains(activeElement))
+    ) {
+      return;
+    }
+    onClose();
+  };
+
   return (
-    <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent>
+    <Dialog open={isOpen} onOpenChange={handleOpenChange}>
+      <DialogContent onPointerDownCapture={(e) => {
+        // Prevent closing when clicking inside the modal
+        if (e.target instanceof Element && 
+            (e.target.closest('.pac-container') || 
+             e.target.closest('.google-address-lookup'))) {
+          e.stopPropagation();
+        }
+      }}
+      onClick={(e) => {
+        // Prevent closing when clicking inside the modal
+        if (e.target instanceof Element && 
+            (e.target.closest('.pac-container') || 
+             e.target.closest('.google-address-lookup'))) {
+          e.stopPropagation();
+        }
+      }}>
         <DialogHeader>
           <DialogTitle>
             {selectedEvent ? "Edit Event" : "New Event"}
@@ -110,28 +144,21 @@ export default function NewEventModal({
               setFormData({ ...formData, end: e.target.value })
             }
           />
-          <GoogleAddressLookup
-            placeholder="Location"
-            defaultValue={formData.location}
-            onAddressSelect={(address) =>
-              setFormData({
-                ...formData,
-                location: address.formatted_address,
-                extendedProps: {
-                  ...formData.extendedProps,
-                  address: address.formatted_address
-                }
-              })
-            }
-          />
           <Select
             value={formData.extendedProps.type}
             onValueChange={(value) =>
-              setFormData({ ...formData, extendedProps: { type: value, isPickup: formData.extendedProps.isPickup } })
+              setFormData({
+                ...formData,
+                extendedProps: {
+                  ...formData.extendedProps,
+                  type: value,
+                  isPickup: formData.extendedProps.isPickup,
+                },
+              })
             }
           >
             <SelectTrigger>
-              <SelectValue placeholder="Select type" />
+              <SelectValue defaultValue={formData.extendedProps.type} placeholder="Select type" />
             </SelectTrigger>
             <SelectContent>
               <SelectItem value="appointment">Appointment</SelectItem>
@@ -143,7 +170,14 @@ export default function NewEventModal({
             <Checkbox
               checked={formData.extendedProps.isPickup}
               onCheckedChange={(value) =>
-                setFormData({ ...formData, extendedProps: { type: formData.extendedProps.type, isPickup: value as boolean } })
+                setFormData({
+                  ...formData,
+                  extendedProps: {
+                    ...formData.extendedProps,
+                    type: formData.extendedProps.type,
+                    isPickup: value as boolean,
+                  },
+                })
               }
             />
             <Label>Pickup</Label>
@@ -151,19 +185,21 @@ export default function NewEventModal({
 
           {/* In Case of pickup, open address input */}
           {formData.extendedProps.isPickup && (
-            <GoogleAddressLookup
-              placeholder="Pickup Address"
-              defaultValue={formData.extendedProps.address}
-              onAddressSelect={(address) =>
-                setFormData({
-                  ...formData,
-                  extendedProps: {
-                    ...formData.extendedProps,
-                    address: address.formatted_address
-                  }
-                })
-              }
-            />
+            <div onMouseDown={(e) => e.stopPropagation()} onClick={(e) => e.stopPropagation()}>
+              <GoogleAddressLookup
+                placeholder="Pickup Address"
+                value={formData.extendedProps.address}
+                onAddressSelect={(address) =>
+                  setFormData({
+                    ...formData,
+                    extendedProps: {
+                      ...formData.extendedProps,
+                      address: address.formatted_address,
+                    },
+                  })
+                }
+              />
+            </div>
           )}
         </div>
         <DialogFooter className="flex justify-between">
