@@ -1,6 +1,9 @@
 import { createBrowserRouter } from 'react-router-dom';
-import Layout from './_layout';
 import ProtectedRoute from '@/components/ProtectedRoute';
+
+// Layouts
+import Layout from './_layout';
+import AdminLayout from './Admin/_AdminLayout';
 
 // Routes
 import HomeRoute from './HomeRoute';
@@ -37,20 +40,26 @@ export const router = createBrowserRouter([
         element: <AuthRoute />,
       },
       {
-        path: 'calendar',
-        element: <ProtectedRoute element={<CalendarRoute />} allowedRoles={['user', 'admin']} />,
-      },
-      {
-        path: 'cars',
-        element: <ProtectedRoute element={<CarsRoute />} allowedRoles={['user', 'admin']} />,
-      },
-      {
-        path: 'appointments',
-        element: <ProtectedRoute element={<AppointmentsRoute />} allowedRoles={['user', 'admin']} />,
-      },
-      {
         path: 'admin',
-        element: <ProtectedRoute element={<h1>Admin Dashboard</h1>} allowedRoles={['admin']} />,
+        element: <ProtectedRoute element={<AdminLayout />} allowedRoles={['admin']} />,
+        children: [
+          {
+            index: true,
+            element: <h1>Admin Dashboard</h1>,
+          },
+          {
+            path: 'appointments',
+            element: <ProtectedRoute element={<AppointmentsRoute />} allowedRoles={['user', 'admin']} />,
+          },
+          {
+            path: 'cars',
+            element: <ProtectedRoute element={<CarsRoute />} allowedRoles={['user', 'admin']} />,
+          },
+          {
+            path: 'calendar',
+            element: <ProtectedRoute element={<CalendarRoute />} allowedRoles={['user', 'admin']} />,
+          },
+        ],
       },
     ],
   },

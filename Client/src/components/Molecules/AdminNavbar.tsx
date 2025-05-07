@@ -1,0 +1,36 @@
+import { useLocation, Link } from 'react-router-dom'
+import { NavigationMenu, NavigationMenuItem, NavigationMenuList } from '@/components/ui/navigation-menu'
+
+const routes = [
+  { name: 'Calendar', path: 'calendar' },
+  { name: 'Cars', path: 'cars' },
+  { name: 'Appointments', path: 'appointments' },
+]
+
+export default function AdminNavbar() {
+  const location = useLocation()
+
+  return (
+    <header className="w-full bg-white sticky top-0 z-50 max-w-6xl mx-auto px-4 py-6 flex items-center justify-center my-4">
+    
+        <NavigationMenu>
+          <NavigationMenuList className="hidden md:flex gap-4">
+            {routes.map((route) => (
+              <NavigationMenuItem key={route.path} className="flex items-center justify-center">
+                <Link
+                  to={`/admin/${route.path}`}
+                  className={`text-sm font-medium px-3 py-2 rounded-md transition ${
+                    location.pathname.includes(`/admin/${route.path}`)
+                      ? 'bg-gray-700 text-white'
+                      : 'hover:bg-muted'
+                  }`}
+                >
+                  {route.name}
+                </Link>
+              </NavigationMenuItem>
+            ))}
+          </NavigationMenuList>
+        </NavigationMenu>   
+    </header>
+  )
+}

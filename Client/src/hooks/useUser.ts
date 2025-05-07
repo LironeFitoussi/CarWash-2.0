@@ -20,7 +20,11 @@ export const useUser = () => {
 
   useEffect(() => {
     if (isAuthenticated && auth0User?.email) {
-      dispatch(fetchUserByEmail(auth0User.email));
+      dispatch(fetchUserByEmail({
+        email: auth0User.email,
+        firstName: '',
+        lastName: ''
+      }));
     } else if (!isAuthenticated) {
       dispatch(resetUser());
     }

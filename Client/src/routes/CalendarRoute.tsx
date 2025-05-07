@@ -37,12 +37,12 @@ export default function CalendarRoute() {
     },
   });
 
-  console.log(formData);
+  // console.log(formData);
   
   const loadEvents = async () => {
     try {
       const data = await eventsApi.getAll();
-      console.log(data);
+      // console.log(data);
       
       const eventsWithTimezone = data.map((event) => ({
         ...event,

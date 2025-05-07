@@ -79,6 +79,7 @@ export const getICalendarFeed = async (req: Request, res: Response) => {
   try {
     const events = await Event.find().sort({ start: 1 });
     
+    const currentUrl = req.protocol + '://' + req.get('host');
     const icsEvents: EventAttributes[] = events.map(event => ({
       start: [
         event.start.getFullYear(),
@@ -97,7 +98,7 @@ export const getICalendarFeed = async (req: Request, res: Response) => {
       title: event.title,
       description: event.description,
       location: event.location,
-      url: `http://localhost:3001/admin/calendar?event=${event._id}`
+      url: `${currentUrl}/admin/calendar?event=${event._id}`
     }));
 
     createEvents(icsEvents, (error, value) => {

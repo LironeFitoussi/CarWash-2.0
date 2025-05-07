@@ -8,10 +8,12 @@ import { AuthSync } from "@/components/AuthSync";
 export default function Layout() {
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen flex flex-col">
       <AuthSync />
       <Navbar />
-      <Outlet />
+      <main className="flex-1 min-h-0 overflow-auto">
+        <Outlet />
+      </main>
       <Toaster />
     </div>
   );
