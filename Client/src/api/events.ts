@@ -11,6 +11,11 @@ export interface Event {
   location?: string;
   createdAt: string;
   updatedAt: string;
+  extendedProps: {
+    type: string;
+    isPickup: boolean;
+    address?: string;
+  }
 }
 
 export interface CreateEventInput {
@@ -19,6 +24,11 @@ export interface CreateEventInput {
   start: string;
   end: string;
   location?: string;
+  extendedProps: {
+    type: string;
+    isPickup: boolean;
+    address?: string;
+  }
 }
 
 export type UpdateEventInput = Partial<CreateEventInput>;

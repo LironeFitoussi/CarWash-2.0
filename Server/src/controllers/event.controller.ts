@@ -13,16 +13,18 @@ export const getAllEvents = async (req: Request, res: Response) => {
 
 export const createEvent = async (req: Request, res: Response) => {
   try {
-    const { title, description, start, end, location } = req.body;
+    const { title, description, start, end, location, extendedProps } = req.body;
     const event = await Event.create({
       title,
       description,
       start: new Date(start),
       end: new Date(end),
       location,
+      extendedProps,
     });
     res.status(201).json(event);
   } catch (error) {
+    console.error(error);
     res.status(400).json({ error: 'Invalid event data' });
   }
 };

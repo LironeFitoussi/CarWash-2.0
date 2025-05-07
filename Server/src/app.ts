@@ -6,7 +6,7 @@ import morgan from 'morgan'
 // Routes imports 
 import healthRouter from './routes/health.routes'
 import userRouter from './routes/user.routes'
-import eventRouter from './routes/events'
+import eventRouter from './routes/events.routes'
 
 const app = express()
 

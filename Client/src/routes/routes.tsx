@@ -6,6 +6,7 @@ import ProtectedRoute from '@/components/ProtectedRoute';
 import HomeRoute from './HomeRoute';
 import AuthRoute from './AuthRoute';
 import CalendarRoute from './CalendarRoute';
+import CarsRoute from './CarsRoute';
 
 // Loaders
 export const router = createBrowserRouter([
@@ -37,6 +38,10 @@ export const router = createBrowserRouter([
       {
         path: 'calendar',
         element: <ProtectedRoute element={<CalendarRoute />} allowedRoles={['user', 'admin']} />,
+      },
+      {
+        path: 'cars',
+        element: <ProtectedRoute element={<CarsRoute />} allowedRoles={['user', 'admin']} />,
       },
       {
         path: 'admin',
