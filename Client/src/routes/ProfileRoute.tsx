@@ -5,8 +5,10 @@ import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Car, Sparkles, User as UserIcon } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 export default function ProfileRoute() {
+    const { t } = useTranslation();
     const { user, isLoading } = useUser();
 
     // Dummy data for cars
@@ -28,13 +30,13 @@ export default function ProfileRoute() {
     // Dummy data for washes
     const washes = [
         {
-            title: "Express Wash",
+            title: t('profile.washes.express', 'Express Wash'),
             date: "2024-06-01",
             status: "completed",
             car: "Toyota Corolla",
         },
         {
-            title: "Premium Wash",
+            title: t('profile.washes.premium', 'Premium Wash'),
             date: "2024-05-15",
             status: "pending",
             car: "Mazda 3",
@@ -58,17 +60,17 @@ export default function ProfileRoute() {
                         {isLoading ? <Skeleton className="h-4 w-32" /> : user.email}
                     </CardDescription>
                     <div className="flex gap-2 mt-2">
-                        <Badge variant="outline">{user.role || "User"}</Badge>
+                        <Badge variant="outline">{user.role || t('profile.user', 'User')}</Badge>
                     </div>
                     <div className="mt-2 text-muted-foreground text-sm">
-                        {isLoading ? <Skeleton className="h-4 w-24" /> : user.phone || "No phone"}
+                        {isLoading ? <Skeleton className="h-4 w-24" /> : user.phone || t('profile.noPhone', 'No phone')}
                     </div>
                     <div className="mt-1 text-muted-foreground text-sm">
-                        {isLoading ? <Skeleton className="h-4 w-32" /> : user.address || "No address"}
+                        {isLoading ? <Skeleton className="h-4 w-32" /> : user.address || t('profile.noAddress', 'No address')}
                     </div>
                 </div>
                 <div className="mt-4 md:mt-0">
-                    <Button variant="outline">Edit Profile</Button>
+                    <Button variant="outline">{t('profile.edit', 'Edit Profile')}</Button>
                 </div>
             </Card>
 
@@ -77,9 +79,9 @@ export default function ProfileRoute() {
                 <CardHeader>
                     <div className="flex items-center gap-2">
                         <Car className="text-primary" />
-                        <CardTitle>My Cars</CardTitle>
+                        <CardTitle>{t('profile.cars.title', 'My Cars')}</CardTitle>
                     </div>
-                    <CardDescription>Your registered vehicles</CardDescription>
+                    <CardDescription>{t('profile.cars.desc', 'Your registered vehicles')}</CardDescription>
                 </CardHeader>
                 <CardContent>
                     <ScrollArea className=" pb-4">
@@ -91,16 +93,16 @@ export default function ProfileRoute() {
                                     </div>
                                     <div className="flex-1">
                                         <div className="font-semibold">{car.manufacturer} {car.model}</div>
-                                        <div className="text-sm text-muted-foreground">Year: {car.year}</div>
-                                        <div className="text-xs text-muted-foreground">License: {car.license}</div>
+                                        <div className="text-sm text-muted-foreground">{t('profile.cars.year', 'Year')}: {car.year}</div>
+                                        <div className="text-xs text-muted-foreground">{t('profile.cars.license', 'License')}: {car.license}</div>
                                     </div>
-                                    <Badge variant="secondary">Primary</Badge>
+                                    <Badge variant="secondary">{t('profile.cars.primary', 'Primary')}</Badge>
                                 </Card>
                             ))}
                         </div>
                         {/* Placeholder for future: Add Car button */}
                         <div className="mt-4 text-center">
-                            <Button variant="outline" size="sm">Add Car</Button>
+                            <Button variant="outline" size="sm">{t('profile.cars.add', 'Add Car')}</Button>
                         </div>
                     </ScrollArea>
                 </CardContent>
@@ -111,9 +113,9 @@ export default function ProfileRoute() {
                 <CardHeader>
                     <div className="flex items-center gap-2">
                         <Sparkles className="text-primary" />
-                        <CardTitle>My Washes</CardTitle>
+                        <CardTitle>{t('profile.washes.title', 'My Washes')}</CardTitle>
                     </div>
-                    <CardDescription>Your recent and upcoming washes</CardDescription>
+                    <CardDescription>{t('profile.washes.desc', 'Your recent and upcoming washes')}</CardDescription>
                 </CardHeader>
                 <CardContent>
                     <ScrollArea className=" pb-4">
@@ -125,18 +127,18 @@ export default function ProfileRoute() {
                                     </div>
                                     <div className="flex-1">
                                         <div className="font-semibold">{wash.title}</div>
-                                        <div className="text-sm text-muted-foreground">Car: {wash.car}</div>
-                                        <div className="text-xs text-muted-foreground">Date: {wash.date}</div>
+                                        <div className="text-sm text-muted-foreground">{t('profile.washes.car', 'Car')}: {wash.car}</div>
+                                        <div className="text-xs text-muted-foreground">{t('profile.washes.date', 'Date')}: {wash.date}</div>
                                     </div>
                                     <Badge variant={wash.status === "completed" ? "secondary" : "outline"}>
-                                        {wash.status}
+                                        {t(`profile.washes.status.${wash.status}`, wash.status)}
                                     </Badge>
                                 </Card>
                             ))}
                         </div>
                         {/* Placeholder for future: Add Wash button */}
                         <div className="mt-4 text-center">
-                            <Button variant="outline" size="sm">Book Wash</Button>
+                            <Button variant="outline" size="sm">{t('profile.washes.add', 'Book Wash')}</Button>
                         </div>
                     </ScrollArea>
                 </CardContent>

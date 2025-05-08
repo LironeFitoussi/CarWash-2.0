@@ -1,9 +1,11 @@
 import { Button } from "../ui/button";
+import { useTranslation } from "react-i18next";
 
 export default function FollowUs() {
+    const { t } = useTranslation();
     return (
         <div>
-            <h3 className="mb-4 font-bold">Follow Us</h3>
+            <h3 className="mb-4 font-bold">{t('footer.followUs.title', 'Follow Us')}</h3>
             <div className="flex gap-4">
               <Button variant="ghost" size="icon" asChild>
                 <a href="#" aria-label="Facebook">

@@ -2,6 +2,7 @@ import { Navigate, useLocation } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import type { RootState } from '@/store';
 import { useAuth } from '@/hooks/useAuth';
+import LoadingSpinner from './Atoms/LoadingSpinner';
 
 interface ProtectedRouteProps {
   element: React.ReactNode;
@@ -16,11 +17,7 @@ const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ element, allowedRoles =
 
   // Show loading state while either Auth0 or user data is being fetched
   if (isAuth0Loading || isUserLoading || (isAuthenticated && !isInitialSyncComplete)) {
-    return (
-      <div className="flex items-center justify-center min-h-[200px]">
-        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div>
-      </div>
-    );
+    return <LoadingSpinner />;
   }
 
   // Check if user is authenticated with Auth0

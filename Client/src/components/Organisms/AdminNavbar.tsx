@@ -1,14 +1,17 @@
 import { useLocation, Link } from 'react-router-dom'
 import { NavigationMenu, NavigationMenuItem, NavigationMenuList } from '@/components/ui/navigation-menu'
-
-const routes = [
-  { name: 'Calendar', path: 'calendar' },
-  { name: 'Cars', path: 'cars' },
-  { name: 'Appointments', path: 'appointments' },
-]
+import { useTranslation } from 'react-i18next'
 
 export default function AdminNavbar() {
+  const { t } = useTranslation();
   const location = useLocation()
+
+  const routes = [
+    { name: t('admin.navbar.dashboard', 'Dashboard'), path: '' },
+    { name: t('admin.navbar.calendar', 'Calendar'), path: 'calendar' },
+    { name: t('admin.navbar.cars', 'Cars'), path: 'cars' },
+    { name: t('admin.navbar.appointments', 'Appointments'), path: 'appointments' },
+  ];
 
   return (
     <header className="w-full bg-white sticky top-0 z-30 max-w-6xl mx-auto px-4 py-6 flex items-center justify-center my-4">
@@ -20,9 +23,13 @@ export default function AdminNavbar() {
                 <Link
                   to={`/admin/${route.path}`}
                   className={`text-sm font-medium px-3 py-2 rounded-md transition ${
-                    location.pathname.includes(`/admin/${route.path}`)
-                      ? 'bg-gray-700 text-white'
-                      : 'hover:bg-muted'
+                    route.path === '' 
+                      ? location.pathname === '/admin/'
+                        ? 'bg-gray-700 text-white'
+                        : 'hover:bg-muted'
+                      : location.pathname.includes(`/admin/${route.path}`)
+                        ? 'bg-gray-700 text-white'
+                        : 'hover:bg-muted'
                   }`}
                 >
                   {route.name}

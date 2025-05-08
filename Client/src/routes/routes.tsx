@@ -8,20 +8,23 @@ import AdminLayout from './Admin/_AdminLayout';
 // Routes
 import HomeRoute from './HomeRoute';
 import AuthRoute from './AuthRoute';
-import CalendarRoute from './CalendarRoute';
-import CarsRoute from './CarsRoute';
-import AppointmentsRoute from './AppointmentsRoute';
+import CalendarRoute from './Admin/CalendarRoute';
+import CarsRoute from './Admin/CarsRoute';
+import AppointmentsRoute from './Admin/AppointmentsRoute';
 import ProfileRoute from './ProfileRoute';
 import AboutRoute from './AboutRoute';
 import ContactRoute from './ContactRoute';
 import ServicesRoute from './ServicesRoute';
 
+// Admin Routes
+import AdminRoute from './Admin/AdminRoute';
+import ErrorPage from './ErrorPage';
 // Loaders
 export const router = createBrowserRouter([
   {
     path: '/',
     element: <Layout />,
-    errorElement: <h1>Error Page</h1>,
+    errorElement: <ErrorPage />,
     children: [
       {
         index: true,
@@ -53,7 +56,7 @@ export const router = createBrowserRouter([
         children: [
           {
             index: true,
-            element: <h1>Admin Dashboard</h1>,
+            element: <AdminRoute />,
           },
           {
             path: 'appointments',

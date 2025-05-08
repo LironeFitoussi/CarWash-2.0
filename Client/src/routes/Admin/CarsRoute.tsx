@@ -1,6 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 import { transliterate } from "hebrew-transliteration";
+import { useTranslation } from "react-i18next";
 
 interface CarInfo {
   tozeret_nm: string;
@@ -10,6 +11,7 @@ interface CarInfo {
 }
 
 export default function CarsRoute() {
+  const { t } = useTranslation();
   const [carNumber, setCarNumber] = useState("1234567");
   const [carInfo, setCarInfo] = useState<CarInfo | null>(null);
   const [loading, setLoading] = useState(false);
@@ -138,38 +140,38 @@ export default function CarsRoute() {
 
   return (
     <div className="p-4 max-w-xl mx-auto">
-      <h1 className="text-2xl font-bold mb-4">Search Car by Number</h1>
+      <h1 className="text-2xl font-bold mb-4">{t('admin.cars.title', 'Search Car by Number')}</h1>
       <form onSubmit={handleSubmit} className="mb-4 flex gap-2">
         <input
           type="text"
           value={carNumber}
           onChange={(e) => setCarNumber(e.target.value)}
-          placeholder="Enter license number (e.g. 1234567)"
+          placeholder={t('admin.cars.licensePlaceholder', 'Enter license number (e.g. 1234567)')}
           className="border px-3 py-2 rounded w-full"
         />
         <button
           type="submit"
           className="bg-blue-600 text-white px-4 py-2 rounded"
         >
-          Search
+          {t('admin.cars.search', 'Search')}
         </button>
       </form>
 
-      {loading && <p>Loading...</p>}
-      {error && <p className="text-red-600">Error: {error}</p>}
+      {loading && <p>{t('admin.cars.loading', 'Loading...')}</p>}
+      {error && <p className="text-red-600">{t('admin.cars.error', 'Error')}: {error}</p>}
 
       {carInfo && (
         <div className="border rounded p-4 shadow mt-4 space-y-2">
           <p>
-            <strong>Manufacturer:</strong>{" "}
-            {normalizeManufacturer(carInfo.tozeret_nm) || "N/A"}
+            <strong>{t('admin.cars.manufacturer', 'Manufacturer')}:</strong>{' '}
+            {normalizeManufacturer(carInfo.tozeret_nm) || t('admin.cars.na', 'N/A')}
           </p>
           <p>
-            <strong>Model:</strong>{" "}
-            {normalizeModel(carInfo.kinuy_mishari, carInfo.tozeret_nm) || "N/A"}
+            <strong>{t('admin.cars.model', 'Model')}:</strong>{' '}
+            {normalizeModel(carInfo.kinuy_mishari, carInfo.tozeret_nm) || t('admin.cars.na', 'N/A')}
           </p>
           <p>
-            <strong>Year:</strong> {carInfo.shnat_yitzur || "N/A"}
+            <strong>{t('admin.cars.year', 'Year')}:</strong> {carInfo.shnat_yitzur || t('admin.cars.na', 'N/A')}
           </p>
 
           <a
@@ -182,13 +184,13 @@ export default function CarsRoute() {
             rel="noopener noreferrer"
             className="inline-block mt-2 bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 transition"
           >
-            🖼️ View Images on Google
+            🖼️ {t('admin.cars.viewImages', 'View Images on Google')}
           </a>
           <button
             onClick={handleSaveCar}
             className="inline-block mt-2 ml-2 bg-purple-600 text-white px-4 py-2 rounded hover:bg-purple-700 transition"
           >
-            💾 Save to Database
+            💾 {t('admin.cars.save', 'Save to Database')}
           </button>
         </div>
       )}

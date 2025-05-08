@@ -1,0 +1,262 @@
+{
+  "navbar": {
+    "home": "Home",
+    "about": "About",
+    "contact": "Contact",
+    "services": "Services",
+    "login": "Login",
+    "register": "Register",
+    "profile": "Profile",
+    "adminDashboard": "Admin Dashboard",
+    "logout": "Log Out",
+    "dashboard": "Dashboard",
+    "calendar": "Calendar",
+    "cars": "Cars",
+    "appointments": "Appointments"
+  },
+  "home": {
+    "heroTitle": "Professional Car Wash & Detailing",
+    "heroSubtitle": "Experience the finest car care services with our state-of-the-art facilities and expert detailing team.",
+    "bookNow": "Book Now",
+    "ourServices": "Our Services",
+    "services": [
+      {
+        "title": "Express Wash",
+        "description": "Quick and efficient cleaning in 15 minutes"
+      },
+      {
+        "title": "Premium Wash",
+        "description": "Comprehensive cleaning with wax protection"
+      },
+      {
+        "title": "Deluxe Detail",
+        "description": "Complete interior and exterior detailing"
+      }
+    ],
+    "learnMore": "Learn More",
+    "whyChooseUs": "Why Choose Our Service?",
+    "whyChooseUs1": "State-of-the-art washing equipment",
+    "whyChooseUs2": "Eco-friendly cleaning products",
+    "whyChooseUs3": "Quick service, amazing results",
+    "premiumQualityTitle": "Premium Quality",
+    "premiumQualityDesc": "We use only the highest quality products and equipment to ensure your vehicle receives the best possible care.",
+    "testimonialsTitle": "What Our Customers Say",
+    "testimonials": [
+      {
+        "name": "John Smith",
+        "role": "Regular Customer",
+        "content": "The best car wash service I've ever experienced. My car always looks brand new!"
+      },
+      {
+        "name": "Sarah Johnson",
+        "role": "Business Owner",
+        "content": "Professional service and attention to detail. Highly recommended!"
+      },
+      {
+        "name": "Mike Williams",
+        "role": "Car Enthusiast",
+        "content": "Their premium detailing service is outstanding. Worth every penny!"
+      }
+    ],
+    "ctaTitle": "Ready to Experience the Best Car Wash?",
+    "ctaSubtitle": "Book your appointment today and give your car the care it deserves.",
+    "scheduleNow": "Schedule Now",
+    "contactUs": "Contact Us",
+    "phone": "Phone",
+    "email": "Email",
+    "hours": "Hours",
+    "hoursWeekdays": "Monday - Friday: 8am - 8pm",
+    "hoursSaturday": "Saturday: 8am - 6pm",
+    "hoursSunday": "Sunday: 9am - 5pm",
+    "followUs": "Follow Us"
+  },
+  "footer": {
+    "rights": "All rights reserved.",
+    "developed": "Developed with",
+    "by": "by",
+    "passion": "a passionate developer crafting digital experiences.",
+    "contactUs": {
+      "title": "Contact Us",
+      "address": "18 Yehuda Hanasi St, Netanya, Israel",
+      "phone": "+972 58-505-9829",
+      "emailLabel": "Email:",
+      "email": "info@carwash.com"
+    },
+    "hours": {
+      "title": "Hours",
+      "weekdays": "Monday - Tuesday: 8am - 8pm",
+      "friday": "Friday: 12pm - One hour till Shabbat",
+      "saturday": "Saturday: Closed",
+      "note": "Hours are subject to change. Please call ahead to confirm availability."
+    },
+    "followUs": {
+      "title": "Follow Us"
+    }
+  },
+  "about": {
+    "title": "About CarWash 🚗",
+    "mission": "Our mission is to provide the finest car care services with state-of-the-art facilities and a passion for excellence.",
+    "intro": "At CarWash, we believe your vehicle deserves the best. Our team is dedicated to delivering a sparkling clean car, every time, with eco-friendly products and a smile.",
+    "values": {
+      "quality": {
+        "title": "Premium Quality",
+        "desc": "We use only the highest quality products and equipment."
+      },
+      "eco": {
+        "title": "Eco-Friendly",
+        "desc": "Our cleaning products are safe for your car and the environment."
+      },
+      "quick": {
+        "title": "Quick Service",
+        "desc": "Get your car washed and detailed in record time."
+      }
+    },
+    "story": {
+      "title": "Our Story",
+      "desc": "Founded in 2023, CarWash started as a small family business with a big dream: to make car care easy, affordable, and enjoyable for everyone.",
+      "content": "Today, our passionate team serves hundreds of happy customers every month. We're proud to be a part of your community and look forward to keeping your car looking its best!"
+    },
+    "contact": {
+      "title": "Contact Us",
+      "desc": "We'd love to hear from you!",
+      "addressLabel": "Address:",
+      "address": "123 Car Wash Street, City, State 12345",
+      "phoneLabel": "Phone:",
+      "phone": "(555) 123-4567",
+      "emailLabel": "Email:",
+      "email": "info@carwash.com",
+      "button": "Send us an Email"
+    }
+  },
+  "services": {
+    "title": "Our Car Wash Services",
+    "subtitle": "Choose from our range of professional car wash and detailing services. We guarantee a sparkling clean car, every time!",
+    "bookNow": "Book Now",
+    "items": {
+      "express": {
+        "title": "Express Wash",
+        "description": "Quick and efficient cleaning in 15 minutes"
+      },
+      "premium": {
+        "title": "Premium Wash",
+        "description": "Comprehensive cleaning with wax protection"
+      },
+      "deluxe": {
+        "title": "Deluxe Detail",
+        "description": "Complete interior and exterior detailing"
+      }
+    }
+  },
+  "contact": {
+    "title": "Contact Us on WhatsApp",
+    "subtitle": "We'd love to hear from you! Send us a direct WhatsApp message below.",
+    "whatsappMessage": "Hi, my name is {{name}}. {{message}}",
+    "form": {
+      "title": "Send a WhatsApp Message",
+      "subtitle": "We'll reply as soon as possible.",
+      "thankYou": "Thank you for your message! We'll be in touch soon via WhatsApp.",
+      "nameLabel": "Name",
+      "namePlaceholder": "Your Name",
+      "messageLabel": "Message",
+      "messagePlaceholder": "How can we help you?",
+      "button": "Send WhatsApp Message"
+    },
+    "info": {
+      "title": "Contact Information",
+      "address": "123 Car Wash Street, City, State 12345",
+      "phone": "+972 58-505-9829 (WhatsApp)",
+      "button": "Message us on WhatsApp"
+    }
+  },
+  "profile": {
+    "user": "User",
+    "noPhone": "No phone",
+    "noAddress": "No address",
+    "edit": "Edit Profile",
+    "cars": {
+      "title": "My Cars",
+      "desc": "Your registered vehicles",
+      "year": "Year",
+      "license": "License",
+      "primary": "Primary",
+      "add": "Add Car"
+    },
+    "washes": {
+      "title": "My Washes",
+      "desc": "Your recent and upcoming washes",
+      "car": "Car",
+      "date": "Date",
+      "add": "Book Wash",
+      "express": "Express Wash",
+      "premium": "Premium Wash",
+      "status": {
+        "completed": "Completed",
+        "pending": "Pending"
+      }
+    }
+  },
+  "admin": {
+    "title": "Admin Dashboard",
+    "subtitle": "Overview and analytics for your car wash business",
+    "analytics": {
+      "totalUsers": "Total Users",
+      "totalCars": "Total Cars",
+      "totalWashes": "Total Washes",
+      "revenue": "Revenue"
+    },
+    "pie": {
+      "title": "Wash Types Distribution",
+      "dummy": "Dummy Data",
+      "express": "Express",
+      "premium": "Premium",
+      "deluxe": "Deluxe"
+    },
+    "revenue": {
+      "title": "Monthly Revenue"
+    },
+    "activity": {
+      "title": "Recent Activity",
+      "user": "User",
+      "wash": "Wash",
+      "revenue": "Revenue",
+      "car": "Car",
+      "newUser": "New User: John Doe",
+      "washCompleted": "Wash Completed for Mazda 3",
+      "paymentReceived": "Payment Received: $25",
+      "newCar": "New Car: Toyota Corolla"
+    },
+    "cars": {
+      "title": "Cars",
+      "desc": "Your registered vehicles",
+      "year": "Year",
+      "license": "License",
+      "primary": "Primary",
+      "loadError": "Failed to load cars"
+    },
+    "calendar": {
+      "title": "Calendar",
+      "loading": "Loading events...",
+      "error": "Failed to load events",
+      "details": "Event Details",
+      "prev": "<",
+      "next": ">",
+      "today": "Today",
+      "view": {
+        "day": "Day",
+        "agenda": "Agenda",
+        "week": "Week",
+        "month": "Month"
+      }
+    },
+    "appointments": {
+      "title": "Appointments",
+      "loadError": "Failed to load appointments"
+    },
+    "navbar": {
+      "dashboard": "Dashboard",
+      "calendar": "Calendar",
+      "cars": "Cars",
+      "appointments": "Appointments"
+    }
+  }
+}

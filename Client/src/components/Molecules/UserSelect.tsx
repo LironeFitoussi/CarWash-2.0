@@ -3,6 +3,7 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
 import { useUserRegex } from "@/hooks/useUser";
+import { useDebounce } from "@/hooks/useDebounce";
 
 // Components
 import AddUserModal from "../Organisms/AddUserModal";
@@ -12,16 +13,16 @@ import type { User } from "@/types";
 
 export default function UserSelect({
   onUserSelect,
-  onAddUserClick,
 }: {
   onUserSelect: (userId: string | null, userFullName: string) => void;
-  onAddUserClick: (searchTerm: string) => void;
 }) {
   const [search, setSearch] = useState("");
   const [showDropdown, setShowDropdown] = useState(false);
   const [showAddUserModal, setShowAddUserModal] = useState(false);
 
-  const { data: users = [], isLoading } = useUserRegex(search);
+  const debouncedSearch = useDebounce(search, 300);
+
+  const { data: users = [], isLoading } = useUserRegex(debouncedSearch);
 
   const handleSelect = (user: User) => {
     onUserSelect(user._id, `${user.firstName} ${user.lastName}`);
@@ -31,7 +32,6 @@ export default function UserSelect({
 
   const handleAddUser = () => {
     setShowAddUserModal(true);
-    onAddUserClick(search);
   };
 
   const handleUserCreated = (user: User) => {
@@ -46,14 +46,14 @@ export default function UserSelect({
         value={search}
         onChange={(e) => {
           setSearch(e.target.value);
-          setShowDropdown(true);
+          setShowDropdown(e.target.value.trim() !== "");
         }}
         onFocus={() => {
           if (search.trim() !== "") setShowDropdown(true);
         }}
       />
 
-      {showDropdown && (
+      {showDropdown && debouncedSearch.trim() !== "" && (
         <div className="absolute z-10 mt-1 w-full rounded-md border bg-white shadow-lg max-h-60 overflow-auto">
           {isLoading ? (
             <div className="p-4">
@@ -71,14 +71,14 @@ export default function UserSelect({
             ))
           ) : (
             <div className="px-4 py-2 text-sm text-muted-foreground space-y-2">
-              <p>No user found for "{search}"</p>
+              <p>No user found for "{debouncedSearch}"</p>
               <Button
                 variant="ghost"
                 size="sm"
                 className="w-full text-left"
                 onClick={handleAddUser}
               >
-                ➕ Add "{search}" as new user
+                ➕ Add "{debouncedSearch}" as new user
               </Button>
             </div>
           )}

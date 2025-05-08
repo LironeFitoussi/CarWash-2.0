@@ -46,10 +46,11 @@ export const useUserRegex = (regex: string) => {
   const { data, isLoading, error } = useQuery({
     queryKey: ['users', regex],
     queryFn: () => getUserRegex(regex),
+    enabled: !!regex && regex.trim() !== "",
   });
 
   return {
-    data: data as User[],
+    data: (data as User[]) || [],
     isLoading,
     error,
   };

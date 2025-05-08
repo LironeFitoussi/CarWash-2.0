@@ -1,0 +1,247 @@
+{
+    "navbar": {
+        "home": "Accueil",
+        "about": "À propos",
+        "contact": "Contact",
+        "services": "Services",
+        "login": "Connexion",
+        "register": "Inscription",
+        "profile": "Profil",
+        "adminDashboard": "Tableau de bord admin",
+        "logout": "Déconnexion",
+        "dashboard": "Tableau de bord",
+        "calendar": "Calendrier",
+        "cars": "Voitures",
+        "appointments": "Rendez-vous"
+    },
+    "home": {
+      "heroTitle": "Lavage et Detailing Professionnel de Voitures",
+      "heroSubtitle": "Découvrez les meilleurs soins pour votre voiture grâce à nos installations de pointe et notre équipe d'experts.",
+      "bookNow": "Réserver",
+      "ourServices": "Nos Services",
+      "services": [
+        { "title": "Lavage Express", "description": "Nettoyage rapide et efficace en 15 minutes" },
+        { "title": "Lavage Premium", "description": "Nettoyage complet avec protection cire" },
+        { "title": "Détail Deluxe", "description": "Détail complet intérieur et extérieur" }
+      ],
+      "learnMore": "En savoir plus",
+      "whyChooseUs": "Pourquoi choisir notre service ?",
+      "whyChooseUs1": "Équipements de lavage à la pointe",
+      "whyChooseUs2": "Produits de nettoyage écologiques",
+      "whyChooseUs3": "Service rapide, résultats impressionnants",
+      "premiumQualityTitle": "Qualité Premium",
+      "premiumQualityDesc": "Nous utilisons uniquement des produits et équipements de la plus haute qualité pour garantir le meilleur soin à votre véhicule.",
+      "testimonialsTitle": "Ce que disent nos clients",
+      "testimonials": [
+        { "name": "John Smith", "role": "Client régulier", "content": "Le meilleur service de lavage auto que j'ai jamais eu. Ma voiture est toujours comme neuve !" },
+        { "name": "Sarah Johnson", "role": "Chef d'entreprise", "content": "Service professionnel et souci du détail. Je recommande vivement !" },
+        { "name": "Mike Williams", "role": "Passionné d'auto", "content": "Leur service de detailing premium est exceptionnel. Ça vaut chaque centime !" }
+      ],
+      "ctaTitle": "Prêt à découvrir le meilleur lavage auto ?",
+      "ctaSubtitle": "Prenez rendez-vous aujourd'hui et offrez à votre voiture le soin qu'elle mérite.",
+      "scheduleNow": "Planifier",
+      "contactUs": "Contactez-nous",
+      "phone": "Téléphone",
+      "email": "Email",
+      "hours": "Horaires",
+      "hoursWeekdays": "Lundi - Vendredi : 8h - 20h",
+      "hoursSaturday": "Samedi : 8h - 18h",
+      "hoursSunday": "Dimanche : 9h - 17h",
+      "followUs": "Suivez-nous"
+    },
+    "footer": {
+      "rights": "Tous droits réservés.",
+      "developed": "Développé avec",
+      "by": "par",
+      "passion": "un développeur passionné créant des expériences numériques.",
+      "contactUs": {
+        "title": "Contactez-nous",
+        "address": "18 Yehuda Hanasi St, Netanya, Israël",
+        "phone": "+972 58-505-9829",
+        "emailLabel": "Email :",
+        "email": "info@carwash.com"
+      },
+      "hours": {
+        "title": "Horaires",
+        "weekdays": "Dimanche - Jeudi : 8h - 20h",
+        "friday": "Vendredi : 12h - 1 heure avant Shabbat",
+        "saturday": "Samedi : Fermé",
+        "note": "Les horaires peuvent changer. Merci d'appeler pour confirmer la disponibilité."
+      },
+      "followUs": {
+        "title": "Suivez-nous"
+      }
+    },
+    "about": {
+      "title": "À propos de CarWash 🚗",
+      "mission": "Notre mission est de fournir les meilleurs soins automobiles avec des installations de pointe et une passion pour l'excellence.",
+      "intro": "Chez CarWash, nous pensons que votre véhicule mérite le meilleur. Notre équipe s'engage à livrer une voiture étincelante à chaque fois, avec des produits écologiques et le sourire.",
+      "values": {
+        "quality": {
+          "title": "Qualité Premium",
+          "desc": "Nous utilisons uniquement des produits et équipements de la plus haute qualité."
+        },
+        "eco": {
+          "title": "Éco-responsable",
+          "desc": "Nos produits de nettoyage sont sûrs pour votre voiture et l'environnement."
+        },
+        "quick": {
+          "title": "Service Rapide",
+          "desc": "Lavage et detailing de votre voiture en un temps record."
+        }
+      },
+      "story": {
+        "title": "Notre Histoire",
+        "desc": "Fondé en 2023, CarWash a commencé comme une petite entreprise familiale avec un grand rêve : rendre l'entretien automobile facile, abordable et agréable pour tous.",
+        "content": "Aujourd'hui, notre équipe passionnée sert des centaines de clients satisfaits chaque mois. Nous sommes fiers de faire partie de votre communauté et impatients de garder votre voiture au top !"
+      },
+      "contact": {
+        "title": "Contactez-nous",
+        "desc": "Nous serions ravis d'avoir de vos nouvelles !",
+        "addressLabel": "Adresse :",
+        "address": "123 Car Wash Street, Ville, État 12345",
+        "phoneLabel": "Téléphone :",
+        "phone": "(555) 123-4567",
+        "emailLabel": "Email :",
+        "email": "info@carwash.com",
+        "button": "Envoyez-nous un email"
+      }
+    },
+    "services": {
+      "title": "Nos services de lavage auto",
+      "subtitle": "Choisissez parmi notre gamme de services professionnels de lavage et de detailing. Nous garantissons une voiture éclatante à chaque fois !",
+      "bookNow": "Réserver",
+      "items": {
+        "express": {
+          "title": "Lavage Express",
+          "description": "Nettoyage rapide et efficace en 15 minutes"
+        },
+        "premium": {
+          "title": "Lavage Premium",
+          "description": "Nettoyage complet avec protection cire"
+        },
+        "deluxe": {
+          "title": "Détail Deluxe",
+          "description": "Détail complet intérieur et extérieur"
+        }
+      }
+    },
+    "contact": {
+      "title": "Contactez-nous sur WhatsApp",
+      "subtitle": "Nous serions ravis d'avoir de vos nouvelles ! Envoyez-nous un message WhatsApp ci-dessous.",
+      "whatsappMessage": "Bonjour, je m'appelle {{name}}. {{message}}",
+      "form": {
+        "title": "Envoyer un message WhatsApp",
+        "subtitle": "Nous répondrons dès que possible.",
+        "thankYou": "Merci pour votre message ! Nous vous répondrons bientôt sur WhatsApp.",
+        "nameLabel": "Nom",
+        "namePlaceholder": "Votre nom",
+        "messageLabel": "Message",
+        "messagePlaceholder": "Comment pouvons-nous vous aider ?",
+        "button": "Envoyer le message WhatsApp"
+      },
+      "info": {
+        "title": "Informations de contact",
+        "address": "123 Car Wash Street, Ville, État 12345",
+        "phone": "+972 58-505-9829 (WhatsApp)",
+        "button": "Écrivez-nous sur WhatsApp"
+      }
+    },
+    "profile": {
+      "user": "Utilisateur",
+      "noPhone": "Pas de téléphone",
+      "noAddress": "Pas d'adresse",
+      "edit": "Modifier le profil",
+      "cars": {
+        "title": "Mes voitures",
+        "desc": "Vos véhicules enregistrés",
+        "year": "Année",
+        "license": "Immatriculation",
+        "primary": "Principale",
+        "add": "Ajouter une voiture"
+      },
+      "washes": {
+        "title": "Mes lavages",
+        "desc": "Vos lavages récents et à venir",
+        "car": "Voiture",
+        "date": "Date",
+        "add": "Réserver un lavage",
+        "express": "Lavage Express",
+        "premium": "Lavage Premium",
+        "status": {
+          "completed": "Terminé",
+          "pending": "En attente"
+        }
+      }
+    },
+    "admin": {
+      "title": "Tableau de bord administrateur",
+      "subtitle": "Aperçu et analyses pour votre entreprise de lavage auto",
+      "analytics": {
+        "totalUsers": "Nombre d'utilisateurs",
+        "totalCars": "Nombre de voitures",
+        "totalWashes": "Nombre de lavages",
+        "revenue": "Revenu"
+      },
+      "pie": {
+        "title": "Répartition des types de lavage",
+        "dummy": "Données factices",
+        "express": "Express",
+        "premium": "Premium",
+        "deluxe": "Deluxe"
+      },
+      "revenue": {
+        "title": "Revenu mensuel"
+      },
+      "activity": {
+        "title": "Activité récente",
+        "user": "Utilisateur",
+        "wash": "Lavage",
+        "revenue": "Revenu",
+        "car": "Voiture",
+        "newUser": "Nouvel utilisateur enregistré : John Doe",
+        "washCompleted": "Lavage terminé pour Mazda 3",
+        "paymentReceived": "Paiement reçu : 25$",
+        "newCar": "Nouvelle voiture ajoutée : Toyota Corolla",
+        "upgraded": "Utilisateur passé en premium"
+      },
+      "cars": {
+        "title": "Rechercher une voiture par numéro",
+        "licensePlaceholder": "Entrez le numéro d'immatriculation (ex : 1234567)",
+        "search": "Rechercher",
+        "loading": "Chargement...",
+        "error": "Erreur",
+        "manufacturer": "Constructeur",
+        "model": "Modèle",
+        "year": "Année",
+        "na": "N/A",
+        "viewImages": "Voir les images sur Google",
+        "save": "Enregistrer dans la base de données"
+      },
+      "calendar": {
+        "title": "Calendrier",
+        "loading": "Chargement des événements...",
+        "error": "Échec du chargement des événements",
+        "details": "Détails du rendez-vous",
+        "prev": "<",
+        "next": ">",
+        "today": "Aujourd'hui",
+        "view": {
+          "day": "Jour",
+          "agenda": "Agenda",
+          "week": "Semaine",
+          "month": "Mois"
+        }
+      },
+      "appointments": {
+        "title": "Rendez-vous",
+        "loadError": "Échec du chargement des rendez-vous"
+      },
+      "navbar": {
+        "dashboard": "Tableau de bord",
+        "calendar": "Calendrier",
+        "cars": "Voitures",
+        "appointments": "Rendez-vous"
+      }
+    }
+}

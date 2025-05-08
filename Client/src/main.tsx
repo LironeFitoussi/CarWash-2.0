@@ -2,6 +2,7 @@ import ReactDOM from 'react-dom/client';
 import { Provider } from 'react-redux';
 import { store } from './store';
 import './index.css';
+import './i18n'; 
 import { RouterProvider } from 'react-router-dom';
 import { router } from './routes/routes';
 import { Auth0Provider } from '@auth0/auth0-react';

@@ -53,19 +53,15 @@ export default function AddAppointmentForm({ onClose, formData, setFormData }: {
 
   const handleUserSelect = (userId: string | null, userFullName: string) => {
     if (userId) {
-      setFormData({ ...formData, extendedProps: { ...formData.extendedProps, userId }, title: `Car Wash Appointment - ${userFullName}` })
+      setFormData({ ...formData, extendedProps: { ...formData.extendedProps, userId }, title: `Car Wash - ${userFullName}` })
     }
-  }
-
-  const handleAddUserClick = (searchTerm: string) => {
-    console.log("Adding user:", searchTerm)
   }
 
   console.log(formData)
 
   return (
     <form onSubmit={handleSubmit} className="space-y-4 max-w-md mx-auto">
-      <UserSelect onUserSelect={handleUserSelect} onAddUserClick={handleAddUserClick} />
+      <UserSelect onUserSelect={handleUserSelect}  />
 
       <div>
         <Label htmlFor="description">Description</Label>
