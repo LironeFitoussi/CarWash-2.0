@@ -1,6 +1,7 @@
 import { Schema, model, Document } from 'mongoose';
 
 interface IUser extends Document {
+  auth0Id?: string; // Auth0 user ID (e.g., google-oauth2|117280074765279489118)
   firstName: string;
   lastName: string;
   email: string;
@@ -15,6 +16,12 @@ interface IUser extends Document {
 }
 
 const userSchema = new Schema<IUser>({
+  auth0Id: {
+    type: String,
+    trim: true,
+    unique: true,
+    sparse: true // Only enforce uniqueness when the field is not null/undefined
+  },
   firstName: {
     type: String,
     required: true,
@@ -67,6 +74,9 @@ const userSchema = new Schema<IUser>({
 }, {
   timestamps: true
 });
+
+// Index for better performance when looking up by Auth0 ID
+userSchema.index({ auth0Id: 1 }, { sparse: true });
 
 const User = model<IUser>('User', userSchema);
 

@@ -2,7 +2,7 @@ import axiosInstance from './axiosInstance';
 
 import type { User, CreateUser } from '@/types';
 
-const endpoint = '/api/v1/users';
+const endpoint = '/users';
 
 // --- CRUD API functions ---
 export const getAllUsers = async (): Promise<User[]> => {

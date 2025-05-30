@@ -8,28 +8,29 @@ import {
   deleteUser,
   getUserRegex
 } from '../controllers/user.controller';
+import { jwtCheck, getUserProfile } from '../middleware/auth0Middleware';
 
 const router = Router();
 
-// Get all users
-router.get('/', getAllUsers);
+// Get all users (admin only - protected)
+router.get('/', jwtCheck, getUserProfile, getAllUsers);
 
-// Get user by ID
-router.get('/:id', getUserById as RequestHandler);
-
-// Get user by email
+// Get user by email (public for user creation/sync)
 router.get('/email/:email', getUserByEmail as RequestHandler);
 
-// Create new user
+// Create new user (public for user creation/sync)
 router.post('/', createUser as RequestHandler);
 
-// Update user
-router.put('/:id', updateUser as RequestHandler);
+// Get user by ID (protected)
+router.get('/:id', jwtCheck, getUserProfile, getUserById as RequestHandler);
 
-// Delete user
-router.delete('/:id', deleteUser as RequestHandler);
+// Update user (protected)
+router.put('/:id', jwtCheck, getUserProfile, updateUser as RequestHandler);
 
-// Get user by regex
-router.get('/regex/:regex', getUserRegex as RequestHandler);
+// Delete user (protected)
+router.delete('/:id', jwtCheck, getUserProfile, deleteUser as RequestHandler);
+
+// Get user by regex (protected)
+router.get('/regex/:regex', jwtCheck, getUserProfile, getUserRegex as RequestHandler);
 
 export default router;

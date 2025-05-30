@@ -8,17 +8,17 @@ import AdminLayout from './Admin/_AdminLayout';
 // Routes
 import HomeRoute from './HomeRoute';
 import AuthRoute from './AuthRoute';
-import CalendarRoute from './Admin/CalendarRoute';
-import CarsRoute from './Admin/CarsRoute';
-import AppointmentsRoute from './Admin/AppointmentsRoute';
 import ProfileRoute from './ProfileRoute';
-import AboutRoute from './AboutRoute';
-import ContactRoute from './ContactRoute';
-import ServicesRoute from './ServicesRoute';
+import DashboardRoute from './DashboardRoute';
+import IncomeRoute from './IncomeRoute';
+import ExpensesRoute from './ExpensesRoute';
+import TransactionsRoute from './TransactionsRoute';
 
 // Admin Routes
 import AdminRoute from './Admin/AdminRoute';
 import ErrorPage from './ErrorPage';
+import AdminCategoriesRoute from './AdminCategoriesRoute';
+
 // Loaders
 export const router = createBrowserRouter([
   {
@@ -31,16 +31,20 @@ export const router = createBrowserRouter([
         element: <HomeRoute />,
       },
       {
-        path: 'about',
-        element: <AboutRoute />,
+        path: 'dashboard',
+        element: <ProtectedRoute element={<DashboardRoute />} allowedRoles={['user', 'admin']} />,
       },
       {
-        path: 'contact',
-        element: <ContactRoute />,
+        path: 'income',
+        element: <ProtectedRoute element={<IncomeRoute />} allowedRoles={['user', 'admin']} />,
       },
       {
-        path: 'services',
-        element: <ServicesRoute />,
+        path: 'expenses',
+        element: <ProtectedRoute element={<ExpensesRoute />} allowedRoles={['user', 'admin']} />,
+      },
+      {
+        path: 'transactions',
+        element: <ProtectedRoute element={<TransactionsRoute />} allowedRoles={['user', 'admin']} />,
       },
       {
         path: 'profile',
@@ -59,16 +63,24 @@ export const router = createBrowserRouter([
             element: <AdminRoute />,
           },
           {
-            path: 'appointments',
-            element: <ProtectedRoute element={<AppointmentsRoute />} allowedRoles={['user', 'admin']} />,
+            path: 'categories',
+            element: <ProtectedRoute element={<AdminCategoriesRoute />} allowedRoles={['admin']} />,
           },
           {
-            path: 'cars',
-            element: <ProtectedRoute element={<CarsRoute />} allowedRoles={['user', 'admin']} />,
+            path: 'accounts',
+            element: <ProtectedRoute element={<div>Accounts Management - Coming Soon</div>} allowedRoles={['admin']} />,
           },
           {
-            path: 'calendar',
-            element: <ProtectedRoute element={<CalendarRoute />} allowedRoles={['user', 'admin']} />,
+            path: 'budgets',
+            element: <ProtectedRoute element={<div>Budgets Management - Coming Soon</div>} allowedRoles={['admin']} />,
+          },
+          {
+            path: 'users',
+            element: <ProtectedRoute element={<div>Users Management - Coming Soon</div>} allowedRoles={['admin']} />,
+          },
+          {
+            path: 'analytics',
+            element: <ProtectedRoute element={<div>Analytics - Coming Soon</div>} allowedRoles={['admin']} />,
           },
         ],
       },

@@ -3,7 +3,7 @@
         "home": "Accueil",
         "about": "À propos",
         "contact": "Contact",
-        "services": "Services",
+        "courses": "Cours",
         "login": "Connexion",
         "register": "Inscription",
         "profile": "Profil",
@@ -11,237 +11,243 @@
         "logout": "Déconnexion",
         "dashboard": "Tableau de bord",
         "calendar": "Calendrier",
-        "cars": "Voitures",
-        "appointments": "Rendez-vous"
+        "lessons": "Leçons",
+        "progress": "Progrès"
     },
     "home": {
-      "heroTitle": "Lavage et Detailing Professionnel de Voitures",
-      "heroSubtitle": "Découvrez les meilleurs soins pour votre voiture grâce à nos installations de pointe et notre équipe d'experts.",
-      "bookNow": "Réserver",
-      "ourServices": "Nos Services",
-      "services": [
-        { "title": "Lavage Express", "description": "Nettoyage rapide et efficace en 15 minutes" },
-        { "title": "Lavage Premium", "description": "Nettoyage complet avec protection cire" },
-        { "title": "Détail Deluxe", "description": "Détail complet intérieur et extérieur" }
+      "heroTitle": "Votre Parcours d'Apprentissage Commence Ici",
+      "heroSubtitle": "Suivez vos progrès, gérez vos cours et atteignez vos objectifs éducatifs avec notre plateforme d'apprentissage complète.",
+      "browseCourses": "Parcourir les Cours",
+      "getStarted": "Commencer Gratuitement",
+      "powerfulFeatures": "Fonctionnalités d'Apprentissage Puissantes",
+      "features": [
+        { "title": "Gestion des Cours", "description": "Organisez et suivez tous vos cours en un seul endroit" },
+        { "title": "Suivi des Progrès", "description": "Indicateurs visuels de progrès et statistiques de completion" },
+        { "title": "Leçons Interactives", "description": "Engagez-vous avec les leçons, tests et documentation" }
       ],
       "learnMore": "En savoir plus",
-      "whyChooseUs": "Pourquoi choisir notre service ?",
-      "whyChooseUs1": "Équipements de lavage à la pointe",
-      "whyChooseUs2": "Produits de nettoyage écologiques",
-      "whyChooseUs3": "Service rapide, résultats impressionnants",
-      "premiumQualityTitle": "Qualité Premium",
-      "premiumQualityDesc": "Nous utilisons uniquement des produits et équipements de la plus haute qualité pour garantir le meilleur soin à votre véhicule.",
-      "testimonialsTitle": "Ce que disent nos clients",
+      "howItWorks": "Comment fonctionne EduTracker",
+      "step1Title": "Créez votre Compte",
+      "step1Desc": "Inscrivez-vous gratuitement et configurez votre profil d'apprentissage",
+      "step2Title": "Ajoutez vos Cours",
+      "step2Desc": "Importez ou créez des cours avec des leçons et jalons",
+      "step3Title": "Suivez les Progrès",
+      "step3Desc": "Marquez les leçons comme terminées et visualisez votre parcours d'apprentissage",
+      "startLearningTitle": "Commencez à Apprendre Aujourd'hui",
+      "startLearningDesc": "Rejoignez des milliers d'apprenants qui font confiance à EduTracker pour leur parcours éducatif.",
+      "joinNow": "Rejoignez - C'est Gratuit",
+      "testimonialsTitle": "Ce que disent nos Apprenants",
       "testimonials": [
-        { "name": "John Smith", "role": "Client régulier", "content": "Le meilleur service de lavage auto que j'ai jamais eu. Ma voiture est toujours comme neuve !" },
-        { "name": "Sarah Johnson", "role": "Chef d'entreprise", "content": "Service professionnel et souci du détail. Je recommande vivement !" },
-        { "name": "Mike Williams", "role": "Passionné d'auto", "content": "Leur service de detailing premium est exceptionnel. Ça vaut chaque centime !" }
+        { "name": "Emily Chen", "role": "Développeuse Logiciel", "content": "EduTracker m'a aidée à me reconvertir dans la tech. Le suivi des cours et la visualisation des progrès m'ont gardée motivée tout au long de mon parcours d'apprentissage !" },
+        { "name": "Marcus Rodriguez", "role": "Chef de Produit", "content": "Plateforme incroyable pour organiser mon développement professionnel. Le système de gestion des leçons est intuitif et puissant." },
+        { "name": "Sarah Kim", "role": "Designer UX", "content": "La meilleure plateforme d'apprentissage que j'ai utilisée. Pouvoir suivre mes progrès à travers plusieurs cours a été révolutionnaire." }
       ],
-      "ctaTitle": "Prêt à découvrir le meilleur lavage auto ?",
-      "ctaSubtitle": "Prenez rendez-vous aujourd'hui et offrez à votre voiture le soin qu'elle mérite.",
-      "scheduleNow": "Planifier",
+      "ctaTitle": "Prêt à Transformer votre Apprentissage ?",
+      "ctaSubtitle": "Rejoignez des milliers d'apprenants qui utilisent EduTracker pour atteindre leurs objectifs éducatifs.",
+      "exploreCourses": "Explorer les Cours",
+      "startFree": "Commencer l'Essai Gratuit",
       "contactUs": "Contactez-nous",
       "phone": "Téléphone",
       "email": "Email",
       "hours": "Horaires",
-      "hoursWeekdays": "Lundi - Vendredi : 8h - 20h",
-      "hoursSaturday": "Samedi : 8h - 18h",
-      "hoursSunday": "Dimanche : 9h - 17h",
+      "hoursWeekdays": "Lundi - Vendredi : 9h - 18h",
+      "hoursSaturday": "Samedi : 10h - 16h",
+      "hoursSunday": "Dimanche : Fermé",
       "followUs": "Suivez-nous"
     },
     "footer": {
       "rights": "Tous droits réservés.",
       "developed": "Développé avec",
       "by": "par",
-      "passion": "un développeur passionné créant des expériences numériques.",
+      "passion": "autonomiser les apprenants grâce à la technologie.",
       "contactUs": {
         "title": "Contactez-nous",
-        "address": "18 Yehuda Hanasi St, Netanya, Israël",
-        "phone": "+972 58-505-9829",
+        "address": "123 Rue de l'Apprentissage, Ville Éducative, VE 12345",
+        "phone": "+33 1 23 45 APPRENDRE",
         "emailLabel": "Email :",
-        "email": "info@carwash.com"
+        "email": "support@edutracker.com"
       },
       "hours": {
-        "title": "Horaires",
-        "weekdays": "Dimanche - Jeudi : 8h - 20h",
-        "friday": "Vendredi : 12h - 1 heure avant Shabbat",
-        "saturday": "Samedi : Fermé",
-        "note": "Les horaires peuvent changer. Merci d'appeler pour confirmer la disponibilité."
+        "title": "Heures de Support",
+        "weekdays": "Lundi - Vendredi : 9h - 18h",
+        "saturday": "Samedi : 10h - 16h",
+        "sunday": "Dimanche : Fermé",
+        "note": "Accès 24h/7j à la plateforme d'apprentissage en ligne. Heures de support pour l'assistance en direct."
       },
       "followUs": {
         "title": "Suivez-nous"
       }
     },
     "about": {
-      "title": "À propos de CarWash 🚗",
-      "mission": "Notre mission est de fournir les meilleurs soins automobiles avec des installations de pointe et une passion pour l'excellence.",
-      "intro": "Chez CarWash, nous pensons que votre véhicule mérite le meilleur. Notre équipe s'engage à livrer une voiture étincelante à chaque fois, avec des produits écologiques et le sourire.",
+      "title": "À propos d'EduTracker 📚",
+      "mission": "Notre mission est d'autonomiser les apprenants du monde entier avec des outils intuitifs de gestion des cours et de suivi des progrès.",
+      "intro": "Chez EduTracker, nous croyons que l'éducation doit être accessible, organisée et engageante. Notre plateforme aide les étudiants et professionnels à atteindre efficacement leurs objectifs d'apprentissage.",
       "values": {
         "quality": {
-          "title": "Qualité Premium",
-          "desc": "Nous utilisons uniquement des produits et équipements de la plus haute qualité."
+          "title": "Apprentissage de Qualité",
+          "desc": "Nous fournissons des outils qui améliorent l'expérience d'apprentissage."
         },
-        "eco": {
-          "title": "Éco-responsable",
-          "desc": "Nos produits de nettoyage sont sûrs pour votre voiture et l'environnement."
+        "accessible": {
+          "title": "Éducation Accessible",
+          "desc": "Les opportunités d'apprentissage doivent être disponibles pour tous, partout."
         },
-        "quick": {
-          "title": "Service Rapide",
-          "desc": "Lavage et detailing de votre voiture en un temps record."
+        "progress": {
+          "title": "Suivi des Progrès",
+          "desc": "Visualisez votre parcours d'apprentissage et célébrez les réussites."
         }
       },
       "story": {
         "title": "Notre Histoire",
-        "desc": "Fondé en 2023, CarWash a commencé comme une petite entreprise familiale avec un grand rêve : rendre l'entretien automobile facile, abordable et agréable pour tous.",
-        "content": "Aujourd'hui, notre équipe passionnée sert des centaines de clients satisfaits chaque mois. Nous sommes fiers de faire partie de votre communauté et impatients de garder votre voiture au top !"
+        "desc": "Fondé en 2024, EduTracker a commencé comme une solution pour aider les apprenants à organiser efficacement leur parcours éducatif.",
+        "content": "Aujourd'hui, des milliers d'étudiants, professionnels et éducateurs utilisent notre plateforme pour suivre les progrès, gérer les cours et atteindre leurs objectifs d'apprentissage. Nous nous engageons à rendre l'éducation plus organisée et accessible pour tous."
       },
       "contact": {
         "title": "Contactez-nous",
-        "desc": "Nous serions ravis d'avoir de vos nouvelles !",
+        "desc": "Nous serions ravis de vous aider dans votre parcours d'apprentissage !",
         "addressLabel": "Adresse :",
-        "address": "123 Car Wash Street, Ville, État 12345",
+        "address": "123 Rue de l'Apprentissage, Ville Éducative, VE 12345",
         "phoneLabel": "Téléphone :",
-        "phone": "(555) 123-4567",
+        "phone": "+33 1 23 45 APPRENDRE",
         "emailLabel": "Email :",
-        "email": "info@carwash.com",
+        "email": "support@edutracker.com",
         "button": "Envoyez-nous un email"
       }
     },
-    "services": {
-      "title": "Nos services de lavage auto",
-      "subtitle": "Choisissez parmi notre gamme de services professionnels de lavage et de detailing. Nous garantissons une voiture éclatante à chaque fois !",
-      "bookNow": "Réserver",
-      "items": {
-        "express": {
-          "title": "Lavage Express",
-          "description": "Nettoyage rapide et efficace en 15 minutes"
-        },
-        "premium": {
-          "title": "Lavage Premium",
-          "description": "Nettoyage complet avec protection cire"
-        },
-        "deluxe": {
-          "title": "Détail Deluxe",
-          "description": "Détail complet intérieur et extérieur"
+    "courses": {
+      "title": "Cours",
+      "subtitle": "Gérez votre parcours d'apprentissage avec notre système complet de suivi des cours.",
+      "noCourses": "Aucun cours disponible",
+      "difficulty": {
+        "beginner": "Débutant",
+        "intermediate": "Intermédiaire",
+        "advanced": "Avancé"
+      },
+      "instructor": "Instructeur",
+      "viewCourse": "Voir le Cours",
+      "error": "Erreur lors du chargement des cours"
+    },
+    "course": {
+      "instructor": "Instructeur",
+      "hours": "heures",
+      "lessons": "leçons",
+      "noLessons": "Aucune leçon disponible",
+      "error": "Erreur lors du chargement du cours",
+      "lesson": {
+        "test": "Test",
+        "doc": "Doc",
+        "dueDate": "Date d'échéance",
+        "markComplete": "Marquer comme Terminé",
+        "markIncomplete": "Marquer comme Non Terminé",
+        "status": {
+          "completed": "Terminé",
+          "missed": "Manqué",
+          "today": "Aujourd'hui",
+          "upcoming": "À venir"
         }
       }
     },
+    "lessons": {
+      "error": "Erreur lors du chargement des leçons"
+    },
     "contact": {
-      "title": "Contactez-nous sur WhatsApp",
-      "subtitle": "Nous serions ravis d'avoir de vos nouvelles ! Envoyez-nous un message WhatsApp ci-dessous.",
+      "title": "Contactez le Support EduTracker",
+      "subtitle": "Avez-vous des questions sur votre parcours d'apprentissage ? Nous sommes là pour vous aider !",
       "whatsappMessage": "Bonjour, je m'appelle {{name}}. {{message}}",
       "form": {
-        "title": "Envoyer un message WhatsApp",
+        "title": "Envoyez-nous un message",
         "subtitle": "Nous répondrons dès que possible.",
-        "thankYou": "Merci pour votre message ! Nous vous répondrons bientôt sur WhatsApp.",
+        "thankYou": "Merci pour votre message ! Nous vous répondrons bientôt.",
         "nameLabel": "Nom",
         "namePlaceholder": "Votre nom",
         "messageLabel": "Message",
-        "messagePlaceholder": "Comment pouvons-nous vous aider ?",
-        "button": "Envoyer le message WhatsApp"
+        "messagePlaceholder": "Comment pouvons-nous vous aider avec votre apprentissage ?",
+        "button": "Envoyer le Message"
       },
       "info": {
         "title": "Informations de contact",
-        "address": "123 Car Wash Street, Ville, État 12345",
-        "phone": "+972 58-505-9829 (WhatsApp)",
-        "button": "Écrivez-nous sur WhatsApp"
+        "address": "123 Rue de l'Apprentissage, Ville Éducative, VE 12345",
+        "phone": "+33 1 23 45 APPRENDRE",
+        "button": "Contacter le Support"
       }
     },
     "profile": {
-      "user": "Utilisateur",
+      "user": "Apprenant",
       "noPhone": "Pas de téléphone",
       "noAddress": "Pas d'adresse",
       "edit": "Modifier le profil",
-      "cars": {
-        "title": "Mes voitures",
-        "desc": "Vos véhicules enregistrés",
-        "year": "Année",
-        "license": "Immatriculation",
-        "primary": "Principale",
-        "add": "Ajouter une voiture"
+      "courses": {
+        "title": "Mes Cours",
+        "desc": "Vos cours inscrits",
+        "level": "Niveau",
+        "progress": "Progrès",
+        "instructor": "Instructeur",
+        "active": "Actif",
+        "add": "S'inscrire à un Cours"
       },
-      "washes": {
-        "title": "Mes lavages",
-        "desc": "Vos lavages récents et à venir",
-        "car": "Voiture",
-        "date": "Date",
-        "add": "Réserver un lavage",
-        "express": "Lavage Express",
-        "premium": "Lavage Premium",
+      "progress": {
+        "title": "Progrès d'Apprentissage",
+        "desc": "Votre activité récente et réalisations des cours",
+        "course": "Cours",
+        "completion": "Completion",
+        "add": "Continuer l'Apprentissage",
+        "completed": "Terminé",
+        "inProgress": "En Cours",
         "status": {
           "completed": "Terminé",
-          "pending": "En attente"
+          "pending": "En Cours"
         }
       }
     },
     "admin": {
-      "title": "Tableau de bord administrateur",
-      "subtitle": "Aperçu et analyses pour votre entreprise de lavage auto",
+      "title": "EduTracker Admin",
+      "subtitle": "Analytiques d'apprentissage et tableau de bord de gestion des cours",
       "analytics": {
-        "totalUsers": "Nombre d'utilisateurs",
-        "totalCars": "Nombre de voitures",
-        "totalWashes": "Nombre de lavages",
-        "revenue": "Revenu"
+        "totalStudents": "Total Étudiants",
+        "totalCourses": "Total Cours",
+        "completedLessons": "Leçons Terminées",
+        "certificates": "Certificats Émis"
       },
       "pie": {
-        "title": "Répartition des types de lavage",
-        "dummy": "Données factices",
-        "express": "Express",
-        "premium": "Premium",
-        "deluxe": "Deluxe"
+        "title": "Distribution des Niveaux de Cours",
+        "dummy": "Données Factices",
+        "beginner": "Débutant",
+        "intermediate": "Intermédiaire",
+        "advanced": "Avancé"
       },
-      "revenue": {
-        "title": "Revenu mensuel"
+      "enrollment": {
+        "title": "Inscriptions Mensuelles"
       },
       "activity": {
         "title": "Activité récente",
-        "user": "Utilisateur",
-        "wash": "Lavage",
-        "revenue": "Revenu",
-        "car": "Voiture",
-        "newUser": "Nouvel utilisateur enregistré : John Doe",
-        "washCompleted": "Lavage terminé pour Mazda 3",
-        "paymentReceived": "Paiement reçu : 25$",
-        "newCar": "Nouvelle voiture ajoutée : Toyota Corolla",
-        "upgraded": "Utilisateur passé en premium"
-      },
-      "cars": {
-        "title": "Rechercher une voiture par numéro",
-        "licensePlaceholder": "Entrez le numéro d'immatriculation (ex : 1234567)",
-        "search": "Rechercher",
-        "loading": "Chargement...",
-        "error": "Erreur",
-        "manufacturer": "Constructeur",
-        "model": "Modèle",
-        "year": "Année",
-        "na": "N/A",
-        "viewImages": "Voir les images sur Google",
-        "save": "Enregistrer dans la base de données"
-      },
-      "calendar": {
-        "title": "Calendrier",
-        "loading": "Chargement des événements...",
-        "error": "Échec du chargement des événements",
-        "details": "Détails du rendez-vous",
-        "prev": "<",
-        "next": ">",
-        "today": "Aujourd'hui",
-        "view": {
-          "day": "Jour",
-          "agenda": "Agenda",
-          "week": "Semaine",
-          "month": "Mois"
-        }
-      },
-      "appointments": {
-        "title": "Rendez-vous",
-        "loadError": "Échec du chargement des rendez-vous"
-      },
-      "navbar": {
-        "dashboard": "Tableau de bord",
-        "calendar": "Calendrier",
-        "cars": "Voitures",
-        "appointments": "Rendez-vous"
+        "enrollment": "Inscription",
+        "completion": "Completion",
+        "course": "Cours",
+        "certificate": "Certificat",
+        "student": "Étudiant",
+        "newEnrollment": "Nouvelle Inscription : React Fondamentaux",
+        "lessonCompleted": "Leçon Terminée : JavaScript Bases",
+        "newCourse": "Nouveau Cours : Python Avancé",
+        "certificateIssued": "Certificat Émis : Développement Web",
+        "newStudent": "Nouvel Étudiant : Alex Johnson"
       }
+    },
+    "common": {
+      "retry": "Réessayer",
+      "loading": "Chargement...",
+      "error": "Une erreur s'est produite",
+      "success": "Succès !",
+      "cancel": "Annuler",
+      "save": "Sauvegarder",
+      "delete": "Supprimer",
+      "edit": "Modifier",
+      "add": "Ajouter",
+      "create": "Créer",
+      "update": "Mettre à jour",
+      "back": "Retour",
+      "next": "Suivant",
+      "previous": "Précédent",
+      "search": "Rechercher",
+      "filter": "Filtrer",
+      "all": "Tous"
     }
 }

@@ -17,7 +17,7 @@ export interface UpdateTestItemDto {
   [key: string]: unknown;
 }
 
-const endpoint = '/api/v1/test';
+const endpoint = '/test';
 
 // --- CRUD API functions ---
 export const getAllTests = async (): Promise<TestItem[]> => {

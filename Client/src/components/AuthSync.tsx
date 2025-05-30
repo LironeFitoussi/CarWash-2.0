@@ -3,12 +3,25 @@ import { useAuth } from '@/hooks/useAuth';
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
 import { fetchUserByEmail } from '@/store/slices/userSlice';
 import { resetSync } from '@/store/slices/authSyncSlice';
+import { setTokenGetter } from '@/services/api';
+import { useAuth0 } from '@auth0/auth0-react';
 
 export function AuthSync() {
   const { user, isAuthenticated, isLoading: isAuth0Loading } = useAuth();
+  const { getAccessTokenSilently } = useAuth0();
   const dispatch = useAppDispatch();
   const syncAttempted = useRef(false);
   const { isInitialSyncComplete } = useAppSelector((state) => state.authSync);
+
+  // Set up API token getter
+  useEffect(() => {
+    setTokenGetter(async () => {
+      if (!isAuthenticated) {
+        throw new Error('Not authenticated');
+      }
+      return await getAccessTokenSilently();
+    });
+  }, [isAuthenticated, getAccessTokenSilently]);
 
   useEffect(() => {
     // Reset sync state when auth state changes
@@ -34,7 +47,7 @@ export function AuthSync() {
         lastName: user.family_name || ''
       }));
     }
-  }, [isAuthenticated, isAuth0Loading, user, dispatch, isInitialSyncComplete]);
+  }, [isAuthenticated, isAuth0Loading, user, dispatch, isInitialSyncComplete, getAccessTokenSilently]);
 
   return null; // This is a utility component, it doesn't render anything
 } 

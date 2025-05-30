@@ -1,16 +1,15 @@
 import { useLocation, Link } from 'react-router-dom'
 import { NavigationMenu, NavigationMenuItem, NavigationMenuList } from '@/components/ui/navigation-menu'
-import { useTranslation } from 'react-i18next'
 
 export default function AdminNavbar() {
-  const { t } = useTranslation();
   const location = useLocation()
 
   const routes = [
-    { name: t('admin.navbar.dashboard', 'Dashboard'), path: '' },
-    { name: t('admin.navbar.calendar', 'Calendar'), path: 'calendar' },
-    { name: t('admin.navbar.cars', 'Cars'), path: 'cars' },
-    { name: t('admin.navbar.appointments', 'Appointments'), path: 'appointments' },
+    { name: 'Dashboard', path: '' },
+    { name: 'Categories', path: 'categories' },
+    { name: 'Accounts', path: 'accounts' },
+    { name: 'Users', path: 'users' },
+    { name: 'Analytics', path: 'analytics' },
   ];
 
   return (

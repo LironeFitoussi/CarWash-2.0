@@ -3,7 +3,7 @@
     "home": "Home",
     "about": "About",
     "contact": "Contact",
-    "services": "Services",
+    "courses": "Courses",
     "login": "Login",
     "register": "Register",
     "profile": "Profile",
@@ -11,252 +11,264 @@
     "logout": "Log Out",
     "dashboard": "Dashboard",
     "calendar": "Calendar",
-    "cars": "Cars",
-    "appointments": "Appointments"
+    "lessons": "Lessons",
+    "progress": "Progress"
   },
   "home": {
-    "heroTitle": "Professional Car Wash & Detailing",
-    "heroSubtitle": "Experience the finest car care services with our state-of-the-art facilities and expert detailing team.",
-    "bookNow": "Book Now",
-    "ourServices": "Our Services",
-    "services": [
+    "heroTitle": "Your Learning Journey Starts Here",
+    "heroSubtitle": "Track your progress, manage your courses, and achieve your educational goals with our comprehensive learning platform.",
+    "browseCourses": "Browse Courses",
+    "getStarted": "Get Started Free",
+    "powerfulFeatures": "Powerful Learning Features",
+    "features": [
       {
-        "title": "Express Wash",
-        "description": "Quick and efficient cleaning in 15 minutes"
+        "title": "Course Management",
+        "description": "Organize and track all your courses in one place"
       },
       {
-        "title": "Premium Wash",
-        "description": "Comprehensive cleaning with wax protection"
+        "title": "Progress Tracking",
+        "description": "Visual progress indicators and completion statistics"
       },
       {
-        "title": "Deluxe Detail",
-        "description": "Complete interior and exterior detailing"
+        "title": "Interactive Lessons",
+        "description": "Engage with lessons, tests, and documentation"
       }
     ],
     "learnMore": "Learn More",
-    "whyChooseUs": "Why Choose Our Service?",
-    "whyChooseUs1": "State-of-the-art washing equipment",
-    "whyChooseUs2": "Eco-friendly cleaning products",
-    "whyChooseUs3": "Quick service, amazing results",
-    "premiumQualityTitle": "Premium Quality",
-    "premiumQualityDesc": "We use only the highest quality products and equipment to ensure your vehicle receives the best possible care.",
-    "testimonialsTitle": "What Our Customers Say",
+    "howItWorks": "How EduTracker Works",
+    "step1Title": "Create Your Account",
+    "step1Desc": "Sign up for free and set up your learning profile",
+    "step2Title": "Add Your Courses",
+    "step2Desc": "Import or create courses with lessons and milestones",
+    "step3Title": "Track Progress",
+    "step3Desc": "Mark lessons complete and visualize your learning journey",
+    "startLearningTitle": "Start Learning Today",
+    "startLearningDesc": "Join thousands of learners who trust EduTracker for their educational journey.",
+    "joinNow": "Join Now - It's Free",
+    "testimonialsTitle": "What Our Learners Say",
     "testimonials": [
       {
-        "name": "John Smith",
-        "role": "Regular Customer",
-        "content": "The best car wash service I've ever experienced. My car always looks brand new!"
+        "name": "Emily Chen",
+        "role": "Software Developer",
+        "content": "EduTracker helped me transition into tech. The course tracking and progress visualization kept me motivated throughout my learning journey!"
       },
       {
-        "name": "Sarah Johnson",
-        "role": "Business Owner",
-        "content": "Professional service and attention to detail. Highly recommended!"
+        "name": "Marcus Rodriguez",
+        "role": "Product Manager",
+        "content": "Amazing platform for organizing my professional development. The lesson management system is intuitive and powerful."
       },
       {
-        "name": "Mike Williams",
-        "role": "Car Enthusiast",
-        "content": "Their premium detailing service is outstanding. Worth every penny!"
+        "name": "Sarah Kim",
+        "role": "UX Designer",
+        "content": "The best learning platform I've used. Being able to track my progress across multiple courses has been game-changing."
       }
     ],
-    "ctaTitle": "Ready to Experience the Best Car Wash?",
-    "ctaSubtitle": "Book your appointment today and give your car the care it deserves.",
-    "scheduleNow": "Schedule Now",
+    "ctaTitle": "Ready to Transform Your Learning?",
+    "ctaSubtitle": "Join thousands of successful learners who use EduTracker to achieve their educational goals.",
+    "exploreCourses": "Explore Courses",
+    "startFree": "Start Free Trial",
     "contactUs": "Contact Us",
     "phone": "Phone",
     "email": "Email",
     "hours": "Hours",
-    "hoursWeekdays": "Monday - Friday: 8am - 8pm",
-    "hoursSaturday": "Saturday: 8am - 6pm",
-    "hoursSunday": "Sunday: 9am - 5pm",
+    "hoursWeekdays": "Monday - Friday: 9am - 6pm",
+    "hoursSaturday": "Saturday: 10am - 4pm",
+    "hoursSunday": "Sunday: Closed",
     "followUs": "Follow Us"
   },
   "footer": {
     "rights": "All rights reserved.",
     "developed": "Developed with",
     "by": "by",
-    "passion": "a passionate developer crafting digital experiences.",
+    "passion": "empowering learners through technology.",
     "contactUs": {
       "title": "Contact Us",
-      "address": "18 Yehuda Hanasi St, Netanya, Israel",
-      "phone": "+972 58-505-9829",
+      "address": "123 Learning St, Education City, EC 12345",
+      "phone": "+1 (555) 123-LEARN",
       "emailLabel": "Email:",
-      "email": "info@carwash.com"
+      "email": "support@edutracker.com"
     },
     "hours": {
-      "title": "Hours",
-      "weekdays": "Monday - Tuesday: 8am - 8pm",
-      "friday": "Friday: 12pm - One hour till Shabbat",
-      "saturday": "Saturday: Closed",
-      "note": "Hours are subject to change. Please call ahead to confirm availability."
+      "title": "Support Hours",
+      "weekdays": "Monday - Friday: 9am - 6pm",
+      "saturday": "Saturday: 10am - 4pm",
+      "sunday": "Sunday: Closed",
+      "note": "24/7 online learning platform access. Support hours for live assistance."
     },
     "followUs": {
       "title": "Follow Us"
     }
   },
   "about": {
-    "title": "About CarWash 🚗",
-    "mission": "Our mission is to provide the finest car care services with state-of-the-art facilities and a passion for excellence.",
-    "intro": "At CarWash, we believe your vehicle deserves the best. Our team is dedicated to delivering a sparkling clean car, every time, with eco-friendly products and a smile.",
+    "title": "About EduTracker 📚",
+    "mission": "Our mission is to empower learners worldwide with intuitive course management and progress tracking tools.",
+    "intro": "At EduTracker, we believe education should be accessible, organized, and engaging. Our platform helps students and professionals achieve their learning goals efficiently.",
     "values": {
       "quality": {
-        "title": "Premium Quality",
-        "desc": "We use only the highest quality products and equipment."
+        "title": "Quality Learning",
+        "desc": "We provide tools that enhance the learning experience."
       },
-      "eco": {
-        "title": "Eco-Friendly",
-        "desc": "Our cleaning products are safe for your car and the environment."
+      "accessible": {
+        "title": "Accessible Education",
+        "desc": "Learning opportunities should be available to everyone, everywhere."
       },
-      "quick": {
-        "title": "Quick Service",
-        "desc": "Get your car washed and detailed in record time."
+      "progress": {
+        "title": "Progress Tracking",
+        "desc": "Visualize your learning journey and celebrate achievements."
       }
     },
     "story": {
       "title": "Our Story",
-      "desc": "Founded in 2023, CarWash started as a small family business with a big dream: to make car care easy, affordable, and enjoyable for everyone.",
-      "content": "Today, our passionate team serves hundreds of happy customers every month. We're proud to be a part of your community and look forward to keeping your car looking its best!"
+      "desc": "Founded in 2024, EduTracker began as a solution to help learners organize their educational journey effectively.",
+      "content": "Today, thousands of students, professionals, and educators use our platform to track progress, manage courses, and achieve their learning objectives. We're committed to making education more organized and accessible for everyone."
     },
     "contact": {
       "title": "Contact Us",
-      "desc": "We'd love to hear from you!",
+      "desc": "We'd love to help you on your learning journey!",
       "addressLabel": "Address:",
-      "address": "123 Car Wash Street, City, State 12345",
+      "address": "123 Learning Street, Education City, EC 12345",
       "phoneLabel": "Phone:",
-      "phone": "(555) 123-4567",
+      "phone": "+1 (555) 123-LEARN",
       "emailLabel": "Email:",
-      "email": "info@carwash.com",
+      "email": "support@edutracker.com",
       "button": "Send us an Email"
     }
   },
-  "services": {
-    "title": "Our Car Wash Services",
-    "subtitle": "Choose from our range of professional car wash and detailing services. We guarantee a sparkling clean car, every time!",
-    "bookNow": "Book Now",
-    "items": {
-      "express": {
-        "title": "Express Wash",
-        "description": "Quick and efficient cleaning in 15 minutes"
-      },
-      "premium": {
-        "title": "Premium Wash",
-        "description": "Comprehensive cleaning with wax protection"
-      },
-      "deluxe": {
-        "title": "Deluxe Detail",
-        "description": "Complete interior and exterior detailing"
+  "courses": {
+    "title": "Courses",
+    "subtitle": "Manage your learning journey with our comprehensive course tracking system.",
+    "noCourses": "No courses available",
+    "difficulty": {
+      "beginner": "Beginner",
+      "intermediate": "Intermediate",
+      "advanced": "Advanced"
+    },
+    "instructor": "Instructor",
+    "viewCourse": "View Course",
+    "error": "Error loading courses"
+  },
+  "course": {
+    "instructor": "Instructor",
+    "hours": "hours",
+    "lessons": "lessons",
+    "noLessons": "No lessons available",
+    "error": "Error loading course",
+    "lesson": {
+      "test": "Test",
+      "doc": "Doc",
+      "dueDate": "Due Date",
+      "markComplete": "Mark as Complete",
+      "markIncomplete": "Mark as Incomplete",
+      "status": {
+        "completed": "Completed",
+        "missed": "Missed",
+        "today": "Today",
+        "upcoming": "Upcoming"
       }
     }
   },
+  "lessons": {
+    "error": "Error loading lessons"
+  },
   "contact": {
-    "title": "Contact Us on WhatsApp",
-    "subtitle": "We'd love to hear from you! Send us a direct WhatsApp message below.",
+    "title": "Contact EduTracker Support",
+    "subtitle": "Have questions about your learning journey? We're here to help!",
     "whatsappMessage": "Hi, my name is {{name}}. {{message}}",
     "form": {
-      "title": "Send a WhatsApp Message",
+      "title": "Send us a Message",
       "subtitle": "We'll reply as soon as possible.",
-      "thankYou": "Thank you for your message! We'll be in touch soon via WhatsApp.",
+      "thankYou": "Thank you for your message! We'll be in touch soon.",
       "nameLabel": "Name",
       "namePlaceholder": "Your Name",
       "messageLabel": "Message",
-      "messagePlaceholder": "How can we help you?",
-      "button": "Send WhatsApp Message"
+      "messagePlaceholder": "How can we help with your learning?",
+      "button": "Send Message"
     },
     "info": {
       "title": "Contact Information",
-      "address": "123 Car Wash Street, City, State 12345",
-      "phone": "+972 58-505-9829 (WhatsApp)",
-      "button": "Message us on WhatsApp"
+      "address": "123 Learning Street, Education City, EC 12345",
+      "phone": "+1 (555) 123-LEARN",
+      "button": "Contact Support"
     }
   },
   "profile": {
-    "user": "User",
+    "user": "Learner",
     "noPhone": "No phone",
     "noAddress": "No address",
     "edit": "Edit Profile",
-    "cars": {
-      "title": "My Cars",
-      "desc": "Your registered vehicles",
-      "year": "Year",
-      "license": "License",
-      "primary": "Primary",
-      "add": "Add Car"
+    "courses": {
+      "title": "My Courses",
+      "desc": "Your enrolled courses",
+      "level": "Level",
+      "progress": "Progress",
+      "instructor": "Instructor",
+      "active": "Active",
+      "add": "Enroll in Course"
     },
-    "washes": {
-      "title": "My Washes",
-      "desc": "Your recent and upcoming washes",
-      "car": "Car",
-      "date": "Date",
-      "add": "Book Wash",
-      "express": "Express Wash",
-      "premium": "Premium Wash",
+    "progress": {
+      "title": "Learning Progress",
+      "desc": "Your recent course activity and achievements",
+      "course": "Course",
+      "completion": "Completion",
+      "add": "Continue Learning",
+      "completed": "Completed",
+      "inProgress": "In Progress",
       "status": {
         "completed": "Completed",
-        "pending": "Pending"
+        "pending": "In Progress"
       }
     }
   },
   "admin": {
-    "title": "Admin Dashboard",
-    "subtitle": "Overview and analytics for your car wash business",
+    "title": "EduTracker Admin",
+    "subtitle": "Learning analytics and course management dashboard",
     "analytics": {
-      "totalUsers": "Total Users",
-      "totalCars": "Total Cars",
-      "totalWashes": "Total Washes",
-      "revenue": "Revenue"
+      "totalStudents": "Total Students",
+      "totalCourses": "Total Courses",
+      "completedLessons": "Completed Lessons",
+      "certificates": "Certificates Issued"
     },
     "pie": {
-      "title": "Wash Types Distribution",
+      "title": "Course Levels Distribution",
       "dummy": "Dummy Data",
-      "express": "Express",
-      "premium": "Premium",
-      "deluxe": "Deluxe"
+      "beginner": "Beginner",
+      "intermediate": "Intermediate",
+      "advanced": "Advanced"
     },
-    "revenue": {
-      "title": "Monthly Revenue"
+    "enrollment": {
+      "title": "Monthly Enrollment"
     },
     "activity": {
       "title": "Recent Activity",
-      "user": "User",
-      "wash": "Wash",
-      "revenue": "Revenue",
-      "car": "Car",
-      "newUser": "New User: John Doe",
-      "washCompleted": "Wash Completed for Mazda 3",
-      "paymentReceived": "Payment Received: $25",
-      "newCar": "New Car: Toyota Corolla"
-    },
-    "cars": {
-      "title": "Cars",
-      "desc": "Your registered vehicles",
-      "year": "Year",
-      "license": "License",
-      "primary": "Primary",
-      "loadError": "Failed to load cars"
-    },
-    "calendar": {
-      "title": "Calendar",
-      "loading": "Loading events...",
-      "error": "Failed to load events",
-      "details": "Event Details",
-      "prev": "<",
-      "next": ">",
-      "today": "Today",
-      "view": {
-        "day": "Day",
-        "agenda": "Agenda",
-        "week": "Week",
-        "month": "Month"
-      }
-    },
-    "appointments": {
-      "title": "Appointments",
-      "loadError": "Failed to load appointments"
-    },
-    "navbar": {
-      "dashboard": "Dashboard",
-      "calendar": "Calendar",
-      "cars": "Cars",
-      "appointments": "Appointments"
+      "enrollment": "Enrollment",
+      "completion": "Completion", 
+      "course": "Course",
+      "certificate": "Certificate",
+      "student": "Student",
+      "newEnrollment": "New Enrollment: React Fundamentals",
+      "lessonCompleted": "Lesson Completed: JavaScript Basics",
+      "newCourse": "New Course: Advanced Python",
+      "certificateIssued": "Certificate Issued: Web Development",
+      "newStudent": "New Student: Alex Johnson"
     }
+  },
+  "common": {
+    "retry": "Retry",
+    "loading": "Loading...",
+    "error": "An error occurred",
+    "success": "Success!",
+    "cancel": "Cancel",
+    "save": "Save",
+    "delete": "Delete",
+    "edit": "Edit",
+    "add": "Add",
+    "create": "Create",
+    "update": "Update",
+    "back": "Back",
+    "next": "Next",
+    "previous": "Previous",
+    "search": "Search",
+    "filter": "Filter",
+    "all": "All"
   }
 }
